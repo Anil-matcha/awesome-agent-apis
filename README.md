@@ -327,6 +327,7 @@ OpenClaw supports the **Model Context Protocol (MCP)** — the open standard ado
 
 ### Research & Surveys
 
+- [ClawBench: Can AI Agents Complete Everyday Online Tasks?](https://arxiv.org/abs/2604.08523) - Live-site web-agent benchmark with an OpenClaw harness, request-interception scoring, and five-layer run traces ([Project](https://claw-bench.com/) · [Code](https://github.com/reacher-z/ClawBench))
 - [OpenClaw as Language Infrastructure: A Case-Centered Survey of a Public Agent Ecosystem in the Wild](https://www.preprints.org/manuscript/202603.1060) - Preprints.org · academic survey of the OpenClaw ecosystem across Platform, Security, Societies, and Deployment
 
 ---
