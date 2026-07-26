@@ -195,6 +195,7 @@ openclaw plugins install <npm-package>
 
 ### Community Plugins
 
+- [AI Router Provider](https://github.com/airouter-dev/openclaw-ai-router) - OpenAI-compatible OpenClaw provider plugin for [AI Router](https://ai-router.dev), with authenticated model discovery and manual fallback. [ClawHub](https://clawhub.ai/airouter-dev/plugins/openclaw-ai-router).
 - [clawsocial-plugin](https://github.com/mrpeter2025/clawsocial-plugin) - Social discovery network — helps users find and connect with people who share their interests through their AI agent. Semantic matching, real-time messaging, profile cards, web inbox. Ready to use out of the box.
 - [OneQuery](https://github.com/wordbricks/onequery/tree/main/packages/openclaw-plugin) - CLI skill for safe, auditable queries for agents against approved data sources.
 
