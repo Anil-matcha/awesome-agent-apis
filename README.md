@@ -109,6 +109,7 @@ Access the built-in web dashboard at `http://localhost:18789/` to chat, manage i
 | [OctoClaw](https://octoclaw.ai) | Managed Cloud | Fully managed EU hosting — zero setup, pre-provisioned phone number, AI starter budget included, GDPR-compliant |
 | [SlackClaw](https://slackclaw.ai) | Managed Cloud | Managed OpenClaw hosting for Slack — credit-based pricing, per-channel permissions, audit logging, auto-updates. No per-seat fees. |
 | [RapidClaw](https://rapidclaw.dev) | Managed Cloud | Managed OpenClaw hosting for non-technical operators — zero terminal/Docker/SSH setup, deploys in minutes, opinionated defaults. |
+| [RestlessAgents](https://restlessagents.com/) | Managed Cloud | Comparison directory for managed and self-hosted VPS hosting options across OpenClaw and Hermes Agent |
 | [PrimeClaws](https://primeclaws.com) | Managed Cloud | Managed OpenClaw Hermes VPS hosting — one-click deploy in 60s, free GPT-5.4/Mistral Large 3/Kimi K2.5/Deepseek V3.2 included, auto-restart, SSH access, full privacy. |
 | [Agent37](https://agent37.com) | Managed Cloud | Managed OpenClaw hosting from $3.99/mo — browser task board, full web terminal, live Linux desktop, scheduled jobs, 1,000+ app integrations via Composio, BYOK keys go straight to the model provider, isolated container per instance |
 
