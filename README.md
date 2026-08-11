@@ -127,6 +127,7 @@ Access the built-in web dashboard at `http://localhost:18789/` to chat, manage i
 - [openclaw/clawhub](https://github.com/openclaw/clawhub) - Skill directory source
 - [Skills.sh](https://skills.sh/openclaw/openclaw) - Skill discovery platform
 - [CreatorSkills](https://creatorskills.co) - Marketplace of 30+ downloadable AI skills for content creators covering YouTube scripting, sponsorship analysis, content repurposing, and audience growth
+- [Hexis](https://github.com/Bevel-Software/Hexis) - Git-backed platform for skills, tools, and context for AI agents, accessible from OpenClaw through its remote MCP server.
 - [night-market](https://github.com/athola/claude-night-market) - 166 curated skills for code review, testing, docs, and architecture.
 
 ### Notable Skills
