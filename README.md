@@ -426,6 +426,7 @@ A curated list of community-built projects, tools, and integrations for OpenClaw
 | [openclaw-wechat](https://github.com/nicepkg/openclaw-wechat) | 600+ | WeChat (微信) integration |
 | [openclaw-qq](https://github.com/nicepkg/openclaw-qq) | 300+ | QQ integration |
 | [openclaw-wework](https://github.com/nicepkg/openclaw-wework) | 200+ | WeCom/企业微信 integration |
+| [weixin-codex-bridge](https://github.com/leilong611-ai/weixin-codex-bridge) | 6 | Security-first, local WeChat-to-Codex bridge that reuses an existing Weixin/OpenClaw login state; includes default-deny roles, session isolation, workspace sandboxing, and a durable SQLite inbox. |
 
 ### Monitoring & Tools
 
