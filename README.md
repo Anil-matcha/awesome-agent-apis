@@ -158,6 +158,7 @@ Access the built-in web dashboard at `http://localhost:18789/` to chat, manage i
 
 - [Sonar ASO](https://github.com/trysonar/skills) - App Store Optimization for AI agents — keyword research with difficulty & popularity scores, ASO audits, review mining, and revenue estimates for iOS & Google Play via the [Sonar](https://trysonar.app) API. [ClawHub](https://clawhub.ai/petersutarik/sonar-aso) · `openclaw skills install sonar-aso`
 - [MediWise Health Suite](https://github.com/JuneYaooo/mediwise-health-suite) - Family health management skill — health record keeping, diet tracking, weight management, medication reminders, and medical image recognition, all with local SQLite storage for privacy.
+- [stipend](https://github.com/stipend-sh/stipend) - Non-custodial USDC wallet on Base an agent installs by itself, with per-transaction, per-day and per-counterparty spending limits and a destination allowlist enforced in code before signing rather than in a prompt. Also runs as a local stdio MCP server with 7 tools. Python, Apache-2.0, unaudited.
 
 ### Detection & Media Forensics
 
