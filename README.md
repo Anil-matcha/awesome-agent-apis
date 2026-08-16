@@ -257,6 +257,7 @@ OpenClaw supports the **Model Context Protocol (MCP)** — the open standard ado
 
 | Server | Description |
 |--------|-------------|
+| [Agent QA](https://github.com/vostride/agent-qa) | Open-source self-improving QA agent for natural-language web and mobile testing, with persistent test memory, self-healing workflows, and an MCP server available through `agent-qa mcp`. |
 | `https://api.anchorbrowser.io/mcp` | Cloud browser platform for AI agents |
 | [AI Image Generator & Editor — Nanobanana, GPT Image, ComfyUI](https://github.com/jau123/MeiGen-AI-Design-MCP) | Generate professional AI images through a unified interface that routes across multiple providers. 1,300+ curated prompts, style-aware prompt enhancement, and local ComfyUI workflows. |
 | [prompt-to-asset](https://github.com/MohamedAbdallah-14/prompt-to-asset) | MCP server and CLI that generates production-ready visual assets (app icons, favicons, OG images, logos) by routing each request across 30+ image generation models. Zero API key for first run via free-tier providers (Pollinations, Stable Horde, HuggingFace). MIT licensed. |
