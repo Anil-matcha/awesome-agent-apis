@@ -445,6 +445,7 @@ A curated list of community-built projects, tools, and integrations for OpenClaw
 | [OpenClaw Model Picker](https://guardclaw.dev/picker) | 1 (New) | Free, open-source. Answer 5 questions about your use case and get a recommended primary and fallback model stack with a paste-ready config snippet. |
 | [Claw Lens](https://github.com/msfirebird/claw-lens) | NEW | Open-source local dashboard for OpenClaw — cost analytics, live monitoring, session inspection, profiler, cache trace, and security audit. |
 | [ClawStat.us](https://clawstat.us) | NEW | Automated, evidence-backed verdict on whether to update to the latest OpenClaw release — scouts post-release bug reports, scores them from the repo's own severity labels, and has two independent LLMs cross-check the call. Free, open source, with a JSON API and an `llms.txt` mirror for agents. [Source](https://github.com/camilla-oclm/openclaw_status_app) |
+| [ClawMetry](https://github.com/vivekchand/clawmetry) | 395 | Real-time observability dashboard for OpenClaw: live sessions, token costs, tool calls, crons, and memory, one pip install. |
 
 ### Trading & Finance
 
