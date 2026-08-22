@@ -159,6 +159,8 @@ Access the built-in web dashboard at `http://localhost:18789/` to chat, manage i
 - [Sonar ASO](https://github.com/trysonar/skills) - App Store Optimization for AI agents — keyword research with difficulty & popularity scores, ASO audits, review mining, and revenue estimates for iOS & Google Play via the [Sonar](https://trysonar.app) API. [ClawHub](https://clawhub.ai/petersutarik/sonar-aso) · `openclaw skills install sonar-aso`
 - [MediWise Health Suite](https://github.com/JuneYaooo/mediwise-health-suite) - Family health management skill — health record keeping, diet tracking, weight management, medication reminders, and medical image recognition, all with local SQLite storage for privacy.
 
+- [Mnemosyne](https://github.com/ElonAug7/Mnemosyne-agentmemory-engine-openclaw-hermes) - Zero-dependency cognitive memory engine for OpenClaw/Hermes: compound-cue theory retrieval (nDCG 0.238, 5.2× over BM25), pure Markdown storage, zero API keys, data never leaves the machine. Install: `cd Mnemosyne-v6.4 && bash install.sh`
+
 ### Detection & Media Forensics
 
 Skills for verifying whether incoming media is real or AI-generated — essential for agents that ingest user-submitted audio, images, video, or text.
