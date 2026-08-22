@@ -132,7 +132,6 @@ Access the built-in web dashboard at `http://localhost:18789/` to chat, manage i
 ### Notable Skills
 
 - [0xArchive Skill](https://github.com/0xArchiveIO/0xarchive-skill) - Market-data skill for accessing Hyperliquid and Lighter data.
-
 - [ATXP](https://github.com/atxp-dev/atxp) - Give your OpenClaw agent a funded identity: USDC wallet on Base, `@atxp.email` inbox, phone number, and 100+ paid tools (web search, image/video generation, LLM gateway, SMS, voice). Self-registers in one command — no KYC, no human login. `openclaw skills install https://github.com/atxp-dev/atxp`
 - [LobsterDomains](https://lobsterdomains.xyz) - Register ICANN domains (.com/.xyz/.org/1000+ TLDs) with crypto (USDC/ETH/BTC) via API — built for AI agents to acquire domains autonomously
 - [LinkedIn](https://github.com/Linked-API/linkedin-skills) - General-purpose LinkedIn automation via [Linked API](https://linkedapi.io) — fetch profiles, search people and companies, send messages, manage connections, create posts, and more. Supports Sales Navigator and custom workflows. [ClawHub](https://clawhub.ai/vprudnikoff/linkedapi-linkedin)
