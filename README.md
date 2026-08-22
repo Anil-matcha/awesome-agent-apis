@@ -158,6 +158,7 @@ Access the built-in web dashboard at `http://localhost:18789/` to chat, manage i
 
 - [Sonar ASO](https://github.com/trysonar/skills) - App Store Optimization for AI agents — keyword research with difficulty & popularity scores, ASO audits, review mining, and revenue estimates for iOS & Google Play via the [Sonar](https://trysonar.app) API. [ClawHub](https://clawhub.ai/petersutarik/sonar-aso) · `openclaw skills install sonar-aso`
 - [MediWise Health Suite](https://github.com/JuneYaooo/mediwise-health-suite) - Family health management skill — health record keeping, diet tracking, weight management, medication reminders, and medical image recognition, all with local SQLite storage for privacy.
+- [Magic Hour](https://github.com/RhythmP28/clawhub-magic-hour) - AI video and image generation skill via the [Magic Hour](https://magichour.ai) API — one API key for Sora 2, Veo 3.1, Kling 3.0, Seedance, GPT-image, Flux, plus face swap, lip sync and talking photo. Free tier (400 credits + 100/day, no card). Hosted MCP at `https://mcp.magichour.ai/`. `openclaw skills install https://github.com/RhythmP28/clawhub-magic-hour`
 
 ### Detection & Media Forensics
 
