@@ -61,6 +61,7 @@ OpenClaw is a **self-hosted, open-source AI agent** that acts as your personal A
 - [AgentFund](https://github.com/RioTheGreat-ai/agentfund-skill) - Crowdfunding platform for AI agents (milestone-based escrow on Base)
 - [OpenClaw Showcase](https://openclaw.ai/showcase) - What people are building
 - [OpenClaw Releases](https://github.com/openclaw/openclaw/releases) - Latest releases
+- [Darkmoon](https://github.com/ASCIT31/Dark-Moon) - Open source (GPL-3.0) autonomous AI pentest platform and MCP host, covering web, API, Active Directory and Kubernetes, with proof of exploitation.
 - [AGENTS.md](https://github.com/openclaw/openclaw/blob/main/AGENTS.md) - Agent configuration guide
 - [CHANGELOG.md](https://github.com/openclaw/openclaw/blob/main/CHANGELOG.md) - Release notes
 
@@ -109,8 +110,10 @@ Access the built-in web dashboard at `http://localhost:18789/` to chat, manage i
 | [OctoClaw](https://octoclaw.ai) | Managed Cloud | Fully managed EU hosting — zero setup, pre-provisioned phone number, AI starter budget included, GDPR-compliant |
 | [SlackClaw](https://slackclaw.ai) | Managed Cloud | Managed OpenClaw hosting for Slack — credit-based pricing, per-channel permissions, audit logging, auto-updates. No per-seat fees. |
 | [RapidClaw](https://rapidclaw.dev) | Managed Cloud | Managed OpenClaw hosting for non-technical operators — zero terminal/Docker/SSH setup, deploys in minutes, opinionated defaults. |
+| [RestlessAgents](https://restlessagents.com/) | Managed Cloud | Comparison directory for managed and self-hosted VPS hosting options across OpenClaw and Hermes Agent |
 | [PrimeClaws](https://primeclaws.com) | Managed Cloud | Managed OpenClaw Hermes VPS hosting — one-click deploy in 60s, free GPT-5.4/Mistral Large 3/Kimi K2.5/Deepseek V3.2 included, auto-restart, SSH access, full privacy. |
 | [Agent37](https://agent37.com) | Managed Cloud | Managed OpenClaw hosting from $3.99/mo — browser task board, full web terminal, live Linux desktop, scheduled jobs, 1,000+ app integrations via Composio, BYOK keys go straight to the model provider, isolated container per instance |
+| [Molted](https://www.molted.net) | Managed Cloud | Managed OpenClaw fleet hosting for teams and agencies: auto-healing (crash detection under 60s, recovery under 90s, post-mortem per failure), versioned files with point-in-time restore, per-agent email/phone/browser automation, 1,000+ integrations, per-instance-per-day pricing |
 
 ---
 
@@ -127,11 +130,13 @@ Access the built-in web dashboard at `http://localhost:18789/` to chat, manage i
 - [openclaw/clawhub](https://github.com/openclaw/clawhub) - Skill directory source
 - [Skills.sh](https://skills.sh/openclaw/openclaw) - Skill discovery platform
 - [CreatorSkills](https://creatorskills.co) - Marketplace of 30+ downloadable AI skills for content creators covering YouTube scripting, sponsorship analysis, content repurposing, and audience growth
+- [Hexis](https://github.com/Bevel-Software/Hexis) - Git-backed platform for skills, tools, and context for AI agents, accessible from OpenClaw through its remote MCP server.
 - [night-market](https://github.com/athola/claude-night-market) - 166 curated skills for code review, testing, docs, and architecture.
 
 ### Notable Skills
 
 - [0xArchive Skill](https://github.com/0xArchiveIO/0xarchive-skill) - Market-data skill for accessing Hyperliquid and Lighter data.
+- [UIZZE](https://github.com/uizze/uizze) - Portable anti-UI-slop Skill for coding agents, with a free deterministic MCP preview and UI Slop Gate grounded in 800,000+ real web and iOS screens. Install with `npx skills add https://uizze.com --skill anti-ui-slop`; it runs locally without an account or source upload.
 - [ATXP](https://github.com/atxp-dev/atxp) - Give your OpenClaw agent a funded identity: USDC wallet on Base, `@atxp.email` inbox, phone number, and 100+ paid tools (web search, image/video generation, LLM gateway, SMS, voice). Self-registers in one command — no KYC, no human login. `openclaw skills install https://github.com/atxp-dev/atxp`
 - [LobsterDomains](https://lobsterdomains.xyz) - Register ICANN domains (.com/.xyz/.org/1000+ TLDs) with crypto (USDC/ETH/BTC) via API — built for AI agents to acquire domains autonomously
 - [LinkedIn](https://github.com/Linked-API/linkedin-skills) - General-purpose LinkedIn automation via [Linked API](https://linkedapi.io) — fetch profiles, search people and companies, send messages, manage connections, create posts, and more. Supports Sales Navigator and custom workflows. [ClawHub](https://clawhub.ai/vprudnikoff/linkedapi-linkedin)
@@ -146,6 +151,7 @@ Access the built-in web dashboard at `http://localhost:18789/` to chat, manage i
 
 - [Useful AI](https://github.com/uAI-solana/useful-ai-skills) - Shared utility tool library for AI agents. Dispatch data tasks (parsing, normalization, validation, conversion) in plain English, get structured output. 200+ tools, auto-generated, no auth required. Skill file at usefulai.fun/skill.md.
 - [Northstar](https://github.com/Daveglaser0823/northstar-skill) - Daily business briefing skill for founders. Pulls Stripe, Shopify, Lemon Squeezy, and Gumroad metrics into a single morning summary via iMessage, Slack, Telegram, or Email. Free tier available. [ClawHub](https://clawhub.ai/Daveglaser0823/northstar)
+- [OutageDeck Dependency Outage Triage](https://github.com/outagedeck/triage-dependency-outages) - Check vendor-published cloud and SaaS incident evidence before changing code. No account, API key, executable, or environment variable required. `openclaw skills install git:outagedeck/triage-dependency-outages@v0.1.0`
 - [Resemble Detect](https://github.com/resemble-ai/detect-skill) - Deepfake detection and media safety for OpenClaw — detect AI-generated audio, images, video, and text; identify which AI platform synthesized fake audio (source tracing); apply invisible watermarks for provenance; verify speaker identity. Powered by [Resemble AI](https://resemble.ai). Install via `openclaw skills install resemble-ai/detect-skill`.
 - [Voidly Agent Relay](https://github.com/openclaw/skills/tree/main/skills/emperormew/voidly-agent-relay) - End-to-end encrypted agent-to-agent messaging skill via the [Voidly Agent Relay](https://voidly.ai/agents). Register a `did:voidly:...` identity, exchange messages with Double Ratchet + X3DH + ML-KEM-768 hybrid post-quantum crypto, post to encrypted channels, and discover other agents. Compatible with Google A2A v0.3. [ClawHub](https://clawhub.ai/emperormew/voidly-agent-relay) · `openclaw skills install emperormew/voidly-agent-relay`.
 - [tiny.place](https://github.com/tinyhumansai/tiny.place) - Agent-to-agent social network. The `tinyplace` CLI lets an agent claim an @handle identity, get discovered in an open directory, message peers over Signal end-to-end encryption, and transact in USDC and SOL on Solana via x402. By [TinyHumans](https://tinyhumans.ai). [ClawHub](https://clawhub.ai/tinyhumansai/tinyplace) · `clawhub install tinyplace`
@@ -159,6 +165,8 @@ Access the built-in web dashboard at `http://localhost:18789/` to chat, manage i
 
 - [Sonar ASO](https://github.com/trysonar/skills) - App Store Optimization for AI agents — keyword research with difficulty & popularity scores, ASO audits, review mining, and revenue estimates for iOS & Google Play via the [Sonar](https://trysonar.app) API. [ClawHub](https://clawhub.ai/petersutarik/sonar-aso) · `openclaw skills install sonar-aso`
 - [MediWise Health Suite](https://github.com/JuneYaooo/mediwise-health-suite) - Family health management skill — health record keeping, diet tracking, weight management, medication reminders, and medical image recognition, all with local SQLite storage for privacy.
+
+- [Mnemosyne](https://github.com/ElonAug7/Mnemosyne-agentmemory-engine-openclaw-hermes) - Zero-dependency cognitive memory engine for OpenClaw/Hermes: compound-cue theory retrieval (nDCG 0.238, 5.2× over BM25), pure Markdown storage, zero API keys, data never leaves the machine. Install: `cd Mnemosyne-v6.4 && bash install.sh`
 
 ### Detection & Media Forensics
 
@@ -196,6 +204,7 @@ openclaw plugins install <npm-package>
 
 ### Community Plugins
 
+- [AI Router Provider](https://github.com/airouter-dev/openclaw-ai-router) - OpenAI-compatible OpenClaw provider plugin for [AI Router](https://ai-router.dev), with authenticated model discovery and manual fallback. [ClawHub](https://clawhub.ai/airouter-dev/plugins/openclaw-ai-router).
 - [clawsocial-plugin](https://github.com/mrpeter2025/clawsocial-plugin) - Social discovery network — helps users find and connect with people who share their interests through their AI agent. Semantic matching, real-time messaging, profile cards, web inbox. Ready to use out of the box.
 - [OneQuery](https://github.com/wordbricks/onequery/tree/main/packages/openclaw-plugin) - CLI skill for safe, auditable queries for agents against approved data sources.
 
@@ -258,9 +267,13 @@ OpenClaw supports the **Model Context Protocol (MCP)** — the open standard ado
 
 | Server | Description |
 |--------|-------------|
+| [Agent QA](https://github.com/vostride/agent-qa) | Open-source self-improving QA agent for natural-language web and mobile testing, with persistent test memory, self-healing workflows, and an MCP server available through `agent-qa mcp`. |
 | `https://api.anchorbrowser.io/mcp` | Cloud browser platform for AI agents |
+| [Open Index](https://github.com/DrDroidLab/open-index) | Structured context graph for domain-specific agents with hybrid search, validated read/write MCP tools, and a portable OpenClaw setup skill. |
 | [AI Image Generator & Editor — Nanobanana, GPT Image, ComfyUI](https://github.com/jau123/MeiGen-AI-Design-MCP) | Generate professional AI images through a unified interface that routes across multiple providers. 1,300+ curated prompts, style-aware prompt enhancement, and local ComfyUI workflows. |
+| [Parallel Search MCP](https://docs.parallel.ai/integrations/mcp/search-mcp) | Free web search and page fetching over Streamable HTTP at `https://search.parallel.ai/mcp`, with no account or API key. Chosen search queries and requested URLs are sent to Parallel. |
 | [prompt-to-asset](https://github.com/MohamedAbdallah-14/prompt-to-asset) | MCP server and CLI that generates production-ready visual assets (app icons, favicons, OG images, logos) by routing each request across 30+ image generation models. Zero API key for first run via free-tier providers (Pollinations, Stable Horde, HuggingFace). MIT licensed. |
+| [NotFair](https://github.com/nowork-studio/NotFair) | Hosted OAuth MCP connectors for Google Ads, Meta Ads, and Google Search Console. Lets OpenClaw agents audit live account data and apply approval-gated campaign changes with change history. The public app and skills are MIT licensed; hosted connections are available at [notfair.co](https://notfair.co). |
 | ecap-security-auditor | Vulnerability scanning |
 | glin-profanity-mcp | Profanity detection |
 | AnChain.AI Data MCP | AML compliance |
@@ -284,6 +297,7 @@ OpenClaw supports the **Model Context Protocol (MCP)** — the open standard ado
 | [TWZRD Agent Intel](https://intel.twzrd.xyz) | Trust scoring for Solana AI agents. `score_agent(wallet)` + `preflight_check(wallet)` free; `get_trust_receipt(wallet)` via x402. Config: `{"mcpServers":{"twzrd-agent-intel":{"url":"https://intel.twzrd.xyz/mcp"}}}` |
 | [The Stall](https://the-stall.intuitek.ai) | 210 pay-per-call data intelligence capabilities via x402 micropayments (no API key). US/EU/JP stocks, options chains (CBOE), DeFi/DEX data, Polymarket, macro indicators, GDELT news sentiment, SEC/EDGAR, weather history, and 200+ more. Config: `{"mcpServers":{"the-stall":{"url":"https://the-stall.intuitek.ai/mcp"}}}` |
 | [VideoOverlayKit](https://github.com/alichherawalla/video-overlay-kit) | Render 4-6s animated b-roll overlay videos (mp4) for short-form social (LinkedIn, IG Reels, YouTube Shorts, TikTok) and landscape YouTube. AI-driven via MCP: paste your script into Claude Code / Cursor / Codex, the model writes the scene spec and renders the mp4. Built on Remotion + Tabler + Lottie. npm: `@alichherawalla/video-overlay-kit`. Free, MIT, local. |
+| [Publora](https://github.com/publora/mcp-server) | Schedule and publish social posts across 10 networks (LinkedIn, X, Instagram, Threads, TikTok, YouTube, Facebook, Bluesky, Mastodon, Telegram). 16 tools for creating, updating and deleting scheduled posts, uploading media, listing connected channels and LinkedIn engagement. Hosted streamable-HTTP at `https://mcp.publora.com` with OAuth 2.1 or Bearer key; npm `@publora/mcp-server` |
 
 ## Tutorials & Guides
 
@@ -297,6 +311,7 @@ OpenClaw supports the **Model Context Protocol (MCP)** — the open standard ado
 | [Complete Installation Guide](https://www.aifreeapi.com/en/posts/openclaw-installation-guide) | AI Free API | WhatsApp, Telegram, Discord setup |
 | [ClawPath](https://clawpath.dev) | Community | Chinese & English onboarding guide — install, channel, skills, security in 30 min |
 | [Install OpenClaw Guide](https://install-openclaw.net) | install-openclaw.net | Step-by-step VPS & local setup guides, Telegram/VPS install tutorials |
+| [Clawdbot](https://clawdbot.tech/) | Community | Multilingual (EN / 中文 / 日本語 / 한국어 / Español) deployment archive — 30+ guides on Docker, VPS, NAS, security whitepaper, and full rename history |
 
 ### Advanced
 
@@ -328,6 +343,7 @@ OpenClaw supports the **Model Context Protocol (MCP)** — the open standard ado
 
 ### Research & Surveys
 
+- [ClawBench: Can AI Agents Complete Everyday Online Tasks?](https://arxiv.org/abs/2604.08523) - Live-site web-agent benchmark with an OpenClaw harness, request-interception scoring, and five-layer run traces ([Project](https://claw-bench.com/) · [Code](https://github.com/reacher-z/ClawBench))
 - [OpenClaw as Language Infrastructure: A Case-Centered Survey of a Public Agent Ecosystem in the Wild](https://www.preprints.org/manuscript/202603.1060) - Preprints.org · academic survey of the OpenClaw ecosystem across Platform, Security, Societies, and Deployment
 
 ---
@@ -427,6 +443,7 @@ A curated list of community-built projects, tools, and integrations for OpenClaw
 | [openclaw-wechat](https://github.com/nicepkg/openclaw-wechat) | 600+ | WeChat (微信) integration |
 | [openclaw-qq](https://github.com/nicepkg/openclaw-qq) | 300+ | QQ integration |
 | [openclaw-wework](https://github.com/nicepkg/openclaw-wework) | 200+ | WeCom/企业微信 integration |
+| [weixin-codex-bridge](https://github.com/leilong611-ai/weixin-codex-bridge) | 6 | Security-first, local WeChat-to-Codex bridge that reuses an existing Weixin/OpenClaw login state; includes default-deny roles, session isolation, workspace sandboxing, and a durable SQLite inbox. |
 
 ### Monitoring & Tools
 
@@ -446,6 +463,7 @@ A curated list of community-built projects, tools, and integrations for OpenClaw
 | [OpenClaw Model Picker](https://guardclaw.dev/picker) | 1 (New) | Free, open-source. Answer 5 questions about your use case and get a recommended primary and fallback model stack with a paste-ready config snippet. |
 | [Claw Lens](https://github.com/msfirebird/claw-lens) | NEW | Open-source local dashboard for OpenClaw — cost analytics, live monitoring, session inspection, profiler, cache trace, and security audit. |
 | [ClawStat.us](https://clawstat.us) | NEW | Automated, evidence-backed verdict on whether to update to the latest OpenClaw release — scouts post-release bug reports, scores them from the repo's own severity labels, and has two independent LLMs cross-check the call. Free, open source, with a JSON API and an `llms.txt` mirror for agents. [Source](https://github.com/camilla-oclm/openclaw_status_app) |
+| [ClawMetry](https://github.com/vivekchand/clawmetry) | 395 | Real-time observability dashboard for OpenClaw: live sessions, token costs, tool calls, crons, and memory, one pip install. |
 
 ### Trading & Finance
 
@@ -520,6 +538,7 @@ OpenClaw is often compared to other autonomous AI agents and self-hosted AI assi
 | [Agent Zero](https://github.com/frdel/agent-zero) | Open Source | Fully local autonomous agent |
 | [Hermes Agent](https://github.com/NousResearch/hermes-agent) | Open Source | Self-evolving agent with closed learning loop; 18 messaging platforms, 7 backends — includes a native OpenClaw migration path. See [awesome-hermes-agent](https://github.com/SamurAIGPT/awesome-hermes-agent) |
 | [OpenHuman](https://github.com/tinyhumansai/openhuman) | Open Source | Desktop AI assistant for communities; Tauri + Rust core, multi-channel messaging, knowledge-graph memory, skills, voice, and local or cloud LLM routing |
+| [Orkas](https://orkas.ai?source=gh_openclaw) | Open Source | Local-first multi-agent desktop workspace; OpenClaw can run as a CLI backend alongside Claude Code, Codex, OpenCode, and Cline. [Source](https://github.com/Orkas-AI/Orkas) |
 | [Khoj](https://github.com/khoj-ai/khoj) | Open Source | Open-source personal AI |
 | [Hivekeep](https://github.com/MarlBurroW/hivekeep) | Open Source | Self-hosted team of AI agents with persistent memory, web UI, Telegram/Slack/Discord/Matrix |
 | [eesel AI](https://eesel.ai/) | SaaS | Business customer service |
