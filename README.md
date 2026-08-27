@@ -471,6 +471,7 @@ A curated list of community-built projects, tools, and integrations for OpenClaw
 |---------|-------|-------------|
 | [openclaw-trader](https://github.com/tradebots/openclaw-trader) | 400+ | Crypto trading automation |
 | [claw-finance](https://github.com/fintech/claw-finance) | - | Financial data analysis skills |
+| [Superior Skills](https://github.com/Superior-Trade/superior-skills) | 200+ | Open Agent Skills for researching, backtesting, and deploying strategies on Hyperliquid, Lighter, Aerodrome, and Polymarket; live deployment requires explicit confirmation. |
 | [VARRD](https://github.com/augiemazza/varrd) | NEW | Statistical edge discovery — turns trading ideas into validated setups with event studies, backtesting, and K-tracking. \ |
 | [yield-intelligence-skill](https://github.com/thebrierfox/yield-intelligence-skill) | - | Passive income portfolio analysis: US Treasury yield curves, dividend ETFs, REITs. Works standalone, no API key needed. BYOK. MIT. |
 | [moatmri-skill](https://github.com/thebrierfox/moatmri-skill) | - | AI disruption pressure analysis — 10-vector pressure map for businesses facing AI disruption. BYOK. MIT. |
