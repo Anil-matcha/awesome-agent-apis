@@ -267,7 +267,7 @@ OpenClaw supports the **Model Context Protocol (MCP)** — the open standard ado
 
 | Server | Description |
 |--------|-------------|
-| [Agent QA](https://github.com/vostride/agent-qa) | Open-source self-improving QA agent for natural-language web and mobile testing, with persistent test memory, self-healing workflows, and an MCP server available through `agent-qa mcp`. |
+| [Agent QA](https://github.com/vostride/agent-qa) | Source-available QA agent for natural-language web and mobile testing, with persistent test memory, UI-change adaptation, and an MCP server available through `agent-qa mcp`. Current releases use FSL-1.1-ALv2 and convert to Apache-2.0 after two years. |
 | `https://api.anchorbrowser.io/mcp` | Cloud browser platform for AI agents |
 | [Open Index](https://github.com/DrDroidLab/open-index) | Structured context graph for domain-specific agents with hybrid search, validated read/write MCP tools, and a portable OpenClaw setup skill. |
 | [AI Image Generator & Editor — Nanobanana, GPT Image, ComfyUI](https://github.com/jau123/MeiGen-AI-Design-MCP) | Generate professional AI images through a unified interface that routes across multiple providers. 1,300+ curated prompts, style-aware prompt enhancement, and local ComfyUI workflows. |
