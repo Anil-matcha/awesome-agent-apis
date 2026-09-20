@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="images/banner.svg" alt="Awesome Muse Bots" width="760">
+<img src="images/banner.svg" alt="Awesome Meta Muse Agent" width="760">
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-lightgrey.svg)](LICENSE)
 [![Muse](https://img.shields.io/badge/Muse-personal%20AI%20agent-7c3aed)](https://ai.meta.com/muse/)
@@ -8,7 +8,7 @@
 
 </div>
 
-# Awesome Muse Bots
+# Awesome Meta Muse Agent
 
 > A curated collection of practical, copy-paste Muse agent briefs for research, productivity, operations, content, engineering, and personal workflows.
 
