@@ -1,6 +1,6 @@
 # Repository metadata
 
-Use these values when creating or updating `Anil-matcha/awesome-muse-bot` on GitHub.
+Use these values when creating or updating `Anil-matcha/awesome-meta-muse-agent` on GitHub.
 
 ## Description
 
