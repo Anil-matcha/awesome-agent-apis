@@ -1,54 +1,93 @@
-# Contributing to Awesome Muse Bots
+# Contributing
 
-Thanks for helping make the collection useful.
+Thanks for adding a tool. This catalog stays useful only if every entry reflects
+a real, working API — so the bar is: **could a stranger read this file and
+successfully call the tool on the first try, with no other docs open?**
 
-## Add a template
+**This guide covers `providers/*.yaml` only.** `models/*.yaml` (muapi's own hosted
+models) is auto-generated from muapi's live catalog and isn't a PR target — see
+the README's "muapi-hosted models" section. If you want a model added there or
+think one is wrong, open an issue instead of a PR.
 
-Create one Markdown file under `templates/` with:
+## Before you start
 
-```markdown
-# Template name
+- Do you have a real (even free-tier) key for this provider? You'll need one —
+  see "The live test" below. If you can't get a key, don't open the PR yet.
+- Does the provider already have an entry? Check `providers/` first — a
+  near-duplicate with no distinct value gets rejected.
 
-**Category:** Personal / Research / Operations / ...<br>
-**Integrations:** Muse, [connected app names]<br>
-**Approval level:** Low / Medium / High
+## Selection rules
 
-## Use it for
+A tool is accepted when:
 
-One sentence describing the outcome.
+- **Self-serve.** Sign up, get a key, start calling — no sales call, no approval
+  wait beyond normal email/API-key issuance.
+- **Distinct value.** It does something the catalog doesn't already cover, or
+  covers it meaningfully differently (price, coverage, data freshness).
+- **Publicly priced**, or clearly and permanently free within a stated limit.
 
-## Prompt
+A tool is rejected, with a reason recorded in the PR thread, when it's:
 
-> The full copy-paste prompt.
+- enterprise/sales-gated with no public self-serve tier,
+- deprecated or the docs are stale/dead,
+- UI-only with no real API behind it,
+- a near-duplicate of an existing entry with no meaningful difference.
 
-## First supervised run
+If you're not sure a tool clears the bar, open an issue first rather than a PR —
+cheaper for everyone if the answer is no.
 
-Describe a small, reversible test.
+## Filling out the entry
+
+1. Copy `providers/_TEMPLATE.yaml` → `providers/<provider>.yaml` (lowercase,
+   hyphenated, matching the provider's common name — e.g. `providers/hunter.yaml`).
+2. Fill every required field from the provider's **own published docs** — don't
+   guess. Leave `note` fields for anything non-obvious (a quirky auth header, a
+   rate limit that isn't documented anywhere clean, a param that silently no-ops).
+3. Fill `pricing` from the provider's actual pricing page, with a `source_url`
+   and today's date in `checked`.
+
+## The live test (required, no exceptions)
+
+**Never submit an entry you haven't watched actually work.** Specifically:
+
+1. Get a real key (free tier is fine).
+2. Call at least one endpoint for real.
+3. Capture the real response into `examples/<id>.json` (redact the key itself,
+   keep everything else — that's what makes the entry trustworthy).
+4. Also try one call with a deliberately bad/missing key and note what the
+   provider actually returns in `auth.bad_key_behavior` — some APIs return a
+   200 with an error body instead of a 401/403, which silently breaks anything
+   that checks status codes. Write down what you saw, not what you'd expect.
+
+A PR without a captured `examples/<id>.json` is submitted as `status: draft` at
+best and won't be merged as `verified`.
+
+## Validate before opening the PR
+
+```bash
+python3 scripts/catalog_validate.py providers/<your-provider>.yaml
 ```
 
-Keep prompts specific. A good template tells Muse what to gather, what to produce, what it may do, what always needs approval, and when to stop.
+This checks schema shape, required fields, id conventions, and — importantly —
+scans for anything that looks like a real secret accidentally left in the file
+or its example. Fix everything it flags before opening the PR; CI runs the same
+check and will block the merge otherwise.
 
-## Quality rules
+## Common traps (read before you get surprised by one)
 
-- Prefer a narrow workflow with a verifiable finish line.
-- Include the required integrations and a fallback when one is unavailable.
-- Require approval before sending, buying, deleting, publishing, submitting, or changing permissions.
-- Ask the bot to cite sources or link to the records it used when practical.
-- Do not include secrets, private data, or credentials.
-- Link to the original creator or source when adapting an existing prompt.
-- Use neutral language and avoid unsupported claims about Muse capabilities.
-- Add the template to the correct README category and keep entries alphabetized within that category.
+- **200 on a bad key.** Some APIs return `200` with an error message in the body
+  instead of an HTTP error status. Don't assume status-code-only error handling
+  works — check the actual body shape.
+- **Trailing-slash redirects.** A `301`/`308` on a missing/extra trailing slash
+  can silently strip an `Authorization` header on redirect with some HTTP
+  clients. Note the exact path shape that works.
+- **Key-in-path.** A few providers embed the key in the URL path rather than a
+  header or query param — note this explicitly, it's easy to miss.
+- **CSV/non-JSON bodies.** Some "REST" APIs return CSV or XML for specific
+  endpoints. Say so in the endpoint's `note` rather than assuming JSON.
 
-## Review checklist
+## After merge
 
-- [ ] The prompt is copy-paste ready.
-- [ ] Bracketed setup fields are clear.
-- [ ] Integrations are named.
-- [ ] Approval boundaries are explicit.
-- [ ] A reversible first test is included.
-- [ ] Sources and attribution are present.
-- [ ] The README link works.
-
-## Reporting problems
-
-Open an issue with the template name, the expected behavior, the observed behavior, and a redacted example. Never include credentials, private messages, or personal customer data.
+A maintainer independently re-runs your live test before flipping `status` to
+`verified`. This can take a few days — a merged PR with `status: draft` is
+expected in the meantime, not a rejection.
