@@ -1,0 +1,140 @@
+provider: vend
+docs_url: https://extract.paypercall.dev
+status: draft
+
+auth:
+  location: header
+  format: "X-PAYMENT: <nano block hash>  (only after an HTTP 402 challenge)"
+  bad_key_behavior: >-
+    Vend has no API key and no signup. A first call with no payment returns a
+    real HTTP 402 with a JSON error envelope: {"error":"payment_required",
+    "message":"...", "trial_exhausted":true, "price_xno":0.0001, "pay_to":
+    "nano_...", "accepts":[...], "extensions":{...}}. A garbage X-PAYMENT value
+    returns the same 402 — the server never returns 200 until the X-PAYMENT
+    header carries a block hash the nano:mainnet ledger confirms settled. So a
+    missing or bad key is a 402 with a pay_to address, not a 401/403.
+
+pricing:
+  model: per_call
+  amount: 0.0001
+  currency: XNO
+  free_tier: "5 free calls/IP/day return real data before the paywall ('trial_remaining' in the 200 body). After that, HTTP 402 with a metered XNO price."
+  source_url: https://extract.paypercall.dev/.well-known/x402
+  checked: 2026-09-22
+  note: "Settled on-chain in Nano (XNO) via the x402 protocol (HTTP 402 exact scheme). Zero network fee, no minimum, sub-second finality. Prices in the live manifest are raw integer amounts: extract/status/check-link/domain-info/web-search/geoip = 100000000000000000000000000 (0.0001 XNO); nano-info/youtube-transcript = 500000000000000000000000000 (0.0005 XNO)."
+
+endpoints:
+  - id: vend.extract
+    method: GET
+    path: /api/v1/extract?url={url}
+    summary: "Extract clean text and markdown from a URL for LLM consumption; returns title, text, markdown, error."
+    params:
+      - name: url
+        in: query
+        type: string
+        required: true
+        example: "https://example.com"
+    note: ""
+
+  - id: vend.status
+    method: GET
+    path: /api/v1/status?url={url}
+    summary: "One-call URL status: final HTTP status, redirect chain, TLS validity and days-to-expiry, response time, and body-change detection (?previous_hash=)."
+    params:
+      - name: url
+        in: query
+        type: string
+        required: true
+        example: "https://example.com"
+    note: ""
+
+  - id: vend.check-link
+    method: GET
+    path: /api/v1/check-link?url={url}
+    summary: "Check HTTP status, response time, redirect chain for a URL. Returns status_code, response_time_ms, final_url, redirect_chain."
+    params:
+      - name: url
+        in: query
+        type: string
+        required: true
+        example: "https://example.com"
+    note: "Served from sibling host check.paypercall.dev; base_url for this one endpoint is https://check.paypercall.dev."
+
+  - id: vend.domain-info
+    method: GET
+    path: /api/v1/domain-info?domain={domain}
+    summary: "Full domain intelligence: DNS records, WHOIS, SSL/TLS cert, HTTP headers. Structured JSON for agent decision-making."
+    params:
+      - name: domain
+        in: query
+        type: string
+        required: true
+        example: "example.com"
+    note: "Served from sibling host domain.paypercall.dev."
+
+  - id: vend.web-search
+    method: GET
+    path: /api/v1/web-search?q={query}
+    summary: "Web search; returns structured JSON results with titles, URLs, snippets."
+    params:
+      - name: q
+        in: query
+        type: string
+        required: true
+        example: "nano cryptocurrency"
+    note: "Served from sibling host search.paypercall.dev."
+
+  - id: vend.geoip
+    method: GET
+    path: /api/v1/geoip?ip={ip}
+    summary: "IP geolocation lookup. Returns country, city, coordinates, ISP, ASN, timezone."
+    params:
+      - name: ip
+        in: query
+        type: string
+        required: true
+        example: "8.8.8.8"
+    note: "Served from sibling host geoip.paypercall.dev."
+
+  - id: vend.nano-info
+    method: GET
+    path: /api/v1/nano-info?account={nano_account}
+    summary: "Nano account intelligence: balance, representative, block count, frontier, weight, pending. 0.0005 XNO/call."
+    params:
+      - name: account
+        in: query
+        type: string
+        required: true
+        example: "nano_1yo6c1t64ahfjdw1dxizmbbnpdmbrckwhw9phbg5pdkeubrizga4qhnjmnx7"
+    note: ""
+
+  - id: vend.youtube-transcript
+    method: GET
+    path: /api/v1/youtube-transcript?url={url}&language={lang}
+    summary: "Extract captions/transcript from a YouTube video; returns timestamped segments and model-sized chunks with deep-linked citations. 0.0005 XNO/call."
+    params:
+      - name: url
+        in: query
+        type: string
+        required: true
+        example: "https://www.youtube.com/watch?v=jNQXAC9IVRw"
+      - name: language
+        in: query
+        type: string
+        required: false
+        example: "en"
+    note: ""
+
+  - id: vend.balance
+    method: GET
+    path: /api/v1/balance?account={nano_account}
+    summary: "Prepaid balance check (free, no payment required). Fund once, then call with an optional X-BALANCE header."
+    params:
+      - name: account
+        in: query
+        type: string
+        required: true
+        example: "nano_1yo6c1t64ahfjdw1dxizmbbnpdmbrckwhw9phbg5pdkeubrizga4qhnjmnx7"
+    note: "Prepaid-balance flow: POST /api/v1/balance/top-up, then call paid endpoints with X-BALANCE."
+
+base_url: https://extract.paypercall.dev
