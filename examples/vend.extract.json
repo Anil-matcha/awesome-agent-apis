@@ -1,0 +1,32 @@
+{
+  "example_id": "vend.extract",
+  "note": "Real first-call response from a fresh visitor, captured live 2026-09-22. Vend has no API key; a stranger's first call returns an HTTP 402 paywall with a metered XNO price and pay_to, until they settle and retry with the block hash. On the free tier (first 5 calls/IP/day) the same endpoint returns real data with status 200 and 'trial_remaining' in the body. This is the exact 402 challenge body returned by GET /api/v1/extract?url=https://example.com (and the same shape for every endpoint).",
+  "http_status": 402,
+  "body": {
+    "error": "payment_required",
+    "message": "Free trial used up (5 calls/IP per day). Returns tomorrow, or pay 0.0001 XNO above for instant access.",
+    "trial_exhausted": true,
+    "trial_limit": 5,
+    "price_xno": 0.0001,
+    "pay_to": "nano_1yo6c1t64ahfjdw1dxizmbbnpdmbrckwhw9phbg5pdkeubrizga4qhnjmnx7",
+    "endpoint": "/api/v1/extract",
+    "x402Version": 2,
+    "resource": {"url": "https://extract.paypercall.dev/api/v1/extract", "mimeType": "application/json"},
+    "accepts": [
+      {"scheme": "exact", "network": "nano:mainnet", "asset": "XNO", "amount": "100000000000000000000000000", "payTo": "nano_1yo6c1t64ahfjdw1dxizmbbnpdmbrckwhw9phbg5pdkeubrizga4qhnjmnx7", "maxTimeoutSeconds": 60}
+    ],
+    "extensions": {
+      "rail-hint": {
+        "info": {
+          "cheapest": "nano:mainnet",
+          "why": "Zero network fees, no minimum, sub-second finality. This quote is the metered price; the payer pays exactly the metered amount, with no gas floor.",
+          "bootstrap": "pip install feeless402 && nano-pay init",
+          "docs": "https://github.com/feeless402/feeless402",
+          "site": "https://feeless402.com",
+          "faucets": ["https://feeless402.com"],
+          "spec": "x402 exact scheme on nano:mainnet"
+        }
+      }
+    }
+  }
+}
