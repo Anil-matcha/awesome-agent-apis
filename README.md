@@ -1,6 +1,7 @@
 # Awesome Vibe-Coded SaaS
 
 > Open-source alternatives to the SaaS tools people pay for.
+- [Practical Web Tools Studio](https://practicalwebtools.com/studio) — 8 free browser-based Adobe alternatives (photo, vector, video, audio, motion graphics, page design, PDF organizer). Client-side only, no signup.
 
 A curated collection of open-source, AI-assisted SaaS applications and buildable product ideas. Browse focused alternatives for creative work, marketing, SEO, social media, commerce, productivity, support, and more.
 
