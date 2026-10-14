@@ -1,6 +1,3 @@
 __pycache__/
-*.py[cod]
+*.pyc
 .DS_Store
-.venv/
-dist/
-build/
