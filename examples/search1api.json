@@ -1,0 +1,104 @@
+{
+  "_captured": "2026-10-15, real responses from https://api.search1api.com with a real key (key not included)",
+  "search1api.search": {
+    "request": {
+      "method": "POST",
+      "path": "/search",
+      "body": {
+        "query": "model context protocol",
+        "search_service": "google",
+        "max_results": 2
+      }
+    },
+    "status": 200,
+    "response": {
+      "searchParameters": {
+        "query": "model context protocol",
+        "search_service": "google",
+        "max_results": 2,
+        "page": 1,
+        "crawl_results": 0,
+        "image": false,
+        "include_sites": [],
+        "exclude_sites": []
+      },
+      "results": [
+        {
+          "title": "What is the Model Context Protocol (MCP)?",
+          "link": "https://modelcontextprotocol.io/docs/2026-07-28/getting-started/intro",
+          "snippet": "MCP (Model Context Protocol) is an open-source standard for connecting AI applications to external systems. Using MCP, AI applications like Claude or&nbsp;..."
+        },
+        {
+          "title": "Model Context Protocol - Wikipedia",
+          "link": "https://en.wikipedia.org/wiki/Model_Context_Protocol",
+          "snippet": "The Model Context Protocol (MCP) is an open standard and open-source framework introduced by Anthropic in November 2024 to standardize the way artificial&nbsp;..."
+        }
+      ]
+    }
+  },
+  "search1api.news": {
+    "request": {
+      "method": "POST",
+      "path": "/news",
+      "body": {
+        "query": "AI agents",
+        "max_results": 2,
+        "time_range": "week"
+      }
+    },
+    "status": 200,
+    "response": {
+      "searchParameters": {
+        "query": "AI agents",
+        "max_results": 2,
+        "crawl_results": 0,
+        "image": false,
+        "include_sites": [],
+        "exclude_sites": [],
+        "time_range": "week"
+      },
+      "results": [
+        {
+          "title": "JPMorgan Chase blocks outside AI agents like Muse, Instinct from directly accessing accounts",
+          "link": "https://www.cnbc.com/2026/10/13/jpmorgan-ai-agents-account-access.html",
+          "snippet": "JPMorgan Chase CEO Jamie Dimon warned of rogue agents operating at scale and said the bank is building defensive tools. 1 day ago",
+          "published_date": "2026-10-14"
+        },
+        {
+          "title": "AI agents are going rogue — and the law can’t keep up",
+          "link": "https://www.politico.com/news/2026/10/12/AI-agents-hacking-cases",
+          "snippet": "There’s legal uncertainty over how to handle AI-powered hacking — and very few cases to use to find out. 3 days ago",
+          "published_date": "2026-10-12"
+        }
+      ]
+    }
+  },
+  "search1api.crawl": {
+    "request": {
+      "method": "POST",
+      "path": "/crawl",
+      "body": {
+        "url": "https://example.com"
+      }
+    },
+    "status": 200,
+    "response": {
+      "crawlParameters": {
+        "url": "https://example.com"
+      },
+      "results": {
+        "title": "Example Domain",
+        "link": "https://example.com",
+        "content": "This domain is for use in documentation examples without needing permission. This is not a service; avoid relying on it for testing and monitoring purposes.",
+        "metadata": {
+          "sourceUrl": "https://example.com/",
+          "availability": "partial",
+          "unavailableFields": [
+            "author",
+            "publishedTime"
+          ]
+        }
+      }
+    }
+  }
+}
