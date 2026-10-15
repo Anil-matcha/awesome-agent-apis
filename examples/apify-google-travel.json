@@ -1,0 +1,291 @@
+{
+  "_captured": "2026-10-16, real responses from https://api.apify.com with the author's own Apify API token; nothing redacted beyond the token itself. Each run cost ~$0.002-0.004 of platform credits plus the per-item fee for 1 hotel / 3 dates / 1 rental.",
+  "apify-google-travel.hotels-search": {
+    "request": {
+      "method": "POST",
+      "path": "/v2/acts/zet46~google-hotels-scraper/run-sync-get-dataset-items",
+      "body": {
+        "queries": [
+          "Hotel Villa Igea Rome"
+        ],
+        "checkIn": "2026-11-10",
+        "checkOut": "2026-11-12",
+        "maxHotelsPerQuery": 1,
+        "onlyWithPrice": true
+      }
+    },
+    "status": 201,
+    "response": [
+      {
+        "name": "Hotel Trevi",
+        "isVacationRental": false,
+        "propertyType": null,
+        "sleeps": null,
+        "bedrooms": null,
+        "bathrooms": null,
+        "hotelClass": null,
+        "hotelClassText": null,
+        "rating": 3.8,
+        "reviewsCount": 1486,
+        "ratingDistribution": {
+          "1": 180,
+          "2": 100,
+          "3": 173,
+          "4": 360,
+          "5": 673
+        },
+        "pricePerNight": 187,
+        "pricePerNightText": "$187",
+        "totalPrice": 409.15,
+        "totalBeforeTaxes": 346.17,
+        "totalTaxesAndFees": 28.37,
+        "currency": "USD",
+        "checkIn": "2026-11-10",
+        "checkOut": "2026-11-12",
+        "nights": 2,
+        "latitude": 41.900304399999996,
+        "longitude": 12.4840772,
+        "checkInTime": "3:00 PM",
+        "checkOutTime": "11:00 AM",
+        "description": "Understated rooms & suites in a laid-back hotel with a rooftop terrace, plus free breakfast & Wi-Fi.",
+        "website": "https://www.hoteltrevirome.com/",
+        "nearbyPlaces": [
+          {
+            "name": "Trevi Fountain",
+            "travelTime": "1 min"
+          },
+          {
+            "name": "Roma Termini",
+            "travelTime": "9 min"
+          },
+          {
+            "name": "Leonardo da Vinci International Airport",
+            "travelTime": "54 min"
+          }
+        ],
+        "reviewTopics": [
+          {
+            "topic": "Property",
+            "mentions": 150,
+            "positive": 80,
+            "negative": 53,
+            "positiveShare": 0.602
+          },
+          {
+            "topic": "Location",
+            "mentions": 135,
+            "positive": 101,
+            "negative": 18,
+            "positiveShare": 0.849
+          },
+          {
+            "topic": "Service",
+            "mentions": 137,
+            "positive": 83,
+            "negative": 50,
+            "positiveShare": 0.624
+          }
+        ],
+        "amenities": [],
+        "amenityIds": [
+          6,
+          28,
+          15,
+          2,
+          23,
+          1,
+          11,
+          25
+        ],
+        "thumbnail": "https://lh3.googleusercontent.com/grass-proxy/AIM7gW0GXcoMrYJotIuQdp7K0YB9wrL-nn56DgfG2Qi2aCgjg412kJWzorHAXq8yFmj5JX4oq8okcnxfPPtP_Kj7Zh0x11aNDIor4Frjr9cp-ZIVjg66jk3gG3WVShi3mCKiexOkQ8V4f6EKHBUFM5ZWjNCH_x21LLojkpxrqzP0ixaDmx6WMwqpq31wcUHKNyv0YBRj5Fc=s150-w92-h150-n-k-no",
+        "placeId": "0x132f6112936a4125:0xcab32c70b9238d6a",
+        "cid": "7130338542265141432",
+        "entityToken": "ChgI6pqOyYuOy9nKARoLL2cvMXRmaHdqdDcQAQ",
+        "searchQuery": "Hotel Villa Igea Rome",
+        "position": 1,
+        "googleHotelsUrl": "https://www.google.com/travel/hotels/entity/ChgI6pqOyYuOy9nKARoLL2cvMXRmaHdqdDcQAQ?hl=en&gl=us&ts=CAESCgoCCAMKAggDEAAaIAoCGgASGhIUCgcI6g8QCxgKEgcI6g8QCxgMGAIyAhAAKgkKBToDVVNEGgA",
+        "mapsUrl": "https://www.google.com/maps?cid=7130338542265141432",
+        "scrapedAt": "2026-10-15T20:06:17+00:00"
+      }
+    ]
+  },
+  "apify-google-travel.price-calendar": {
+    "request": {
+      "method": "POST",
+      "path": "/v2/acts/zet46~google-hotels-price-calendar/run-sync-get-dataset-items",
+      "body": {
+        "hotels": [
+          "Hilton Garden Inn Rome Airport"
+        ],
+        "startDate": "2026-11-10",
+        "numberOfDates": 3,
+        "nights": 1,
+        "includeProviderPrices": false
+      }
+    },
+    "status": 201,
+    "response": [
+      {
+        "hotel": "Hilton Garden Inn Rome Airport",
+        "input": "Hilton Garden Inn Rome Airport",
+        "checkIn": "2026-11-10",
+        "checkOut": "2026-11-11",
+        "dayOfWeek": "Tuesday",
+        "nights": 1,
+        "currency": "USD",
+        "available": true,
+        "lowestPricePerNight": 146.09,
+        "lowestTotalPrice": 146.09,
+        "cheapestProvider": "KAYAK.com",
+        "providersCount": 32,
+        "providers": null,
+        "rating": null,
+        "reviewsCount": null,
+        "hotelClass": null,
+        "googleHotelsUrl": "https://www.google.com/travel/hotels/entity/ChkIzqDE5IHu3YeuARoML2cvMTJobTY4OF84EAE?hl=en&gl=us&ts=CAESCgoCCAMKAggDEAAaIAoCGgASGhIUCgcI6g8QCxgKEgcI6g8QCxgLGAEyAhAAKgkKBToDVVNEGgA",
+        "scrapedAt": "2026-10-15T20:06:24+00:00"
+      },
+      {
+        "hotel": "Hilton Garden Inn Rome Airport",
+        "input": "Hilton Garden Inn Rome Airport",
+        "checkIn": "2026-11-11",
+        "checkOut": "2026-11-12",
+        "dayOfWeek": "Wednesday",
+        "nights": 1,
+        "currency": "USD",
+        "available": true,
+        "lowestPricePerNight": 146.95,
+        "lowestTotalPrice": 146.95,
+        "cheapestProvider": "KAYAK.com",
+        "providersCount": 32,
+        "providers": null,
+        "rating": null,
+        "reviewsCount": null,
+        "hotelClass": null,
+        "googleHotelsUrl": "https://www.google.com/travel/hotels/entity/ChkIzqDE5IHu3YeuARoML2cvMTJobTY4OF84EAE?hl=en&gl=us&ts=CAESCgoCCAMKAggDEAAaIAoCGgASGhIUCgcI6g8QCxgLEgcI6g8QCxgMGAEyAhAAKgkKBToDVVNEGgA",
+        "scrapedAt": "2026-10-15T20:06:24+00:00"
+      },
+      {
+        "hotel": "Hilton Garden Inn Rome Airport",
+        "input": "Hilton Garden Inn Rome Airport",
+        "checkIn": "2026-11-12",
+        "checkOut": "2026-11-13",
+        "dayOfWeek": "Thursday",
+        "nights": 1,
+        "currency": "USD",
+        "available": true,
+        "lowestPricePerNight": 156.16,
+        "lowestTotalPrice": 156.16,
+        "cheapestProvider": "KAYAK.com",
+        "providersCount": 30,
+        "providers": null,
+        "rating": null,
+        "reviewsCount": null,
+        "hotelClass": null,
+        "googleHotelsUrl": "https://www.google.com/travel/hotels/entity/ChkIzqDE5IHu3YeuARoML2cvMTJobTY4OF84EAE?hl=en&gl=us&ts=CAESCgoCCAMKAggDEAAaIAoCGgASGhIUCgcI6g8QCxgMEgcI6g8QCxgNGAEyAhAAKgkKBToDVVNEGgA",
+        "scrapedAt": "2026-10-15T20:06:24+00:00"
+      }
+    ]
+  },
+  "apify-google-travel.vacation-rentals": {
+    "request": {
+      "method": "POST",
+      "path": "/v2/acts/zet46~google-vacation-rentals-scraper/run-sync-get-dataset-items",
+      "body": {
+        "queries": [
+          "Lisbon"
+        ],
+        "checkIn": "2026-11-10",
+        "checkOut": "2026-11-12",
+        "maxHotelsPerQuery": 1,
+        "onlyWithPrice": true
+      }
+    },
+    "status": 201,
+    "response": [
+      {
+        "name": "Alfama River View | Balcony | Families | Fast Wifi",
+        "isVacationRental": true,
+        "propertyType": "Entire apartment",
+        "sleeps": 4,
+        "bedrooms": 2,
+        "bathrooms": 1,
+        "hotelClass": null,
+        "hotelClassText": null,
+        "rating": 4.78,
+        "reviewsCount": 274,
+        "pricePerNight": 162,
+        "pricePerNightText": "$162",
+        "totalPrice": 357.43,
+        "totalBeforeTaxes": 246.26,
+        "totalTaxesAndFees": 78.45,
+        "currency": "USD",
+        "checkIn": "2026-11-10",
+        "checkOut": "2026-11-12",
+        "nights": 2,
+        "latitude": 38.71500015258789,
+        "longitude": -9.12399959564209,
+        "checkInTime": "3:00 PM",
+        "checkOutTime": "11:00 AM",
+        "description": null,
+        "website": null,
+        "nearbyPlaces": [
+          {
+            "name": "Campo Sta. Clara",
+            "travelTime": "5 min"
+          },
+          {
+            "name": "Humberto Delgado Airport",
+            "travelTime": "30 min"
+          },
+          {
+            "name": "A Parreirinha do Paraíso",
+            "travelTime": "5 min"
+          }
+        ],
+        "reviewTopics": [],
+        "amenities": [
+          "Balcony",
+          "Crib",
+          "Heating",
+          "Ironing board",
+          "Kitchen",
+          "Microwave",
+          "Oven stove",
+          "Smoke-free",
+          "(+ 2 more amenities)"
+        ],
+        "thumbnail": "https://lh3.googleusercontent.com/grass-proxy/AIM7gW10Zy2jBG4i3AdTJnXekz-8LmirHhHLWybfrCrShTYz33xEIrCmzVbdQGG-osoGCLcJuSwm2oYKZFyP6csQ7P9MkV_635mhHFwmy8l3XLpbuJN_61AFxU9EzXRIKsBWfTnI3kNkK92vJzFEPMfEDVnCBW1v5b0e8h9qKK88deq3kxTrieOE00zhnQ=s150-w92-h150-n-k-no",
+        "placeId": null,
+        "cid": "7231730054872182367",
+        "entityToken": "ChkQ39ywwbaFka5kGg0vZy8xMXpoNHg1ejJfEAI",
+        "searchQuery": "Lisbon",
+        "position": 1,
+        "googleHotelsUrl": "https://www.google.com/travel/hotels/entity/ChkQ39ywwbaFka5kGg0vZy8xMXpoNHg1ejJfEAI?hl=en&gl=us&ts=CAESCgoCCAMKAggDEAAaIAoCGgASGhIUCgcI6g8QCxgKEgcI6g8QCxgMGAIyAhAAKgkKBToDVVNEGgA",
+        "mapsUrl": "https://www.google.com/maps?cid=7231730054872182367",
+        "scrapedAt": "2026-10-15T20:06:33+00:00"
+      }
+    ]
+  },
+  "bad_key": {
+    "request": {
+      "method": "POST",
+      "path": "/v2/acts/zet46~google-hotels-scraper/run-sync-get-dataset-items",
+      "headers": {
+        "Authorization": "Bearer apify_api_notarealkey0000000000000000000000"
+      },
+      "body": {
+        "queries": [
+          "test"
+        ]
+      }
+    },
+    "status": 401,
+    "response": {
+      "error": {
+        "type": "user-or-token-not-found",
+        "message": "User was not found or authentication token is not valid"
+      }
+    }
+  }
+}
