@@ -1,0 +1,189 @@
+provider: apify-google-travel
+docs_url: https://apify.com/zet46/google-hotels-scraper
+status: draft
+
+auth:
+  location: header
+  format: "Authorization: Bearer {key}"
+  bad_key_behavior: >-
+    A bad or missing key returns HTTP 401 with a JSON envelope:
+    {"error":{"type":"user-or-token-not-found","message":"User was not found
+    or authentication token is not valid"}}. The same envelope shape (error.type,
+    error.message) is used for every error (bad input, actor-run failure, quota),
+    so parsers can key on error.type across the whole API. Apify also accepts the
+    token in the `?token=` query parameter — same auth outcome.
+
+pricing:
+  model: credits
+  amount: 0.002
+  currency: USD
+  free_tier: "Apify Free plan ships $5/month of platform credits plus an
+    always-free Store-actor allowance; small smoke tests fit inside that. The
+    three actors in this provider are 'pay-per-event' on top of Apify compute:
+    $0.002 per hotel returned (google-hotels-scraper), $0.0015 per date-price
+    (google-hotels-price-calendar), $0.002 per rental (google-vacation-rentals-scraper).
+    OTA provider prices are $0.002 extra per hotel/rental when includeProviderPrices
+    is on. Compute itself is normally pennies per run on 256 MB."
+  source_url: https://apify.com/zet46/google-hotels-scraper
+  checked: 2026-10-16
+  note: >-
+    Platform pricing (compute + proxy) at https://apify.com/pricing — Free, Starter
+    $39/mo, Scale $199/mo, Business $999/mo. Per-event prices above are shown on each
+    actor's Store page, section "Pricing".
+
+endpoints:
+  - id: apify-google-travel.hotels-search
+    method: POST
+    path: /v2/acts/zet46~google-hotels-scraper/run-sync-get-dataset-items
+    summary: "Google Hotels search results for a destination or hotel name on specific dates (price, class, rating, reviews, amenities, lat/long)."
+    params:
+      - name: queries
+        in: body
+        type: array
+        required: true
+        example: ["Hotel Villa Igea Rome"]
+      - name: checkIn
+        in: body
+        type: string
+        required: false
+        example: "2026-11-10"
+      - name: checkOut
+        in: body
+        type: string
+        required: false
+        example: "2026-11-12"
+      - name: maxHotelsPerQuery
+        in: body
+        type: integer
+        required: false
+        example: 10
+      - name: onlyWithPrice
+        in: body
+        type: boolean
+        required: false
+        example: true
+      - name: currency
+        in: body
+        type: string
+        required: false
+        example: "USD"
+      - name: language
+        in: body
+        type: string
+        required: false
+        example: "en"
+      - name: country
+        in: body
+        type: string
+        required: false
+        example: "us"
+    note: >-
+      `queries` accepts a hotel name, an area ("Rome, Italy") or a free-text search
+      ("4-star hotels near Pantheon"). Default dates are tomorrow + 1 night.
+      Append `?token={key}` to call it without a header. The endpoint returns the
+      dataset array directly (one object per hotel); the run itself is also
+      recorded under /v2/actor-runs/{runId} if you need the usage breakdown.
+
+  - id: apify-google-travel.price-calendar
+    method: POST
+    path: /v2/acts/zet46~google-hotels-price-calendar/run-sync-get-dataset-items
+    summary: "Daily cheapest-rate calendar for a named hotel — one row per check-in date with lowest nightly price, cheapest provider, and provider count."
+    params:
+      - name: hotels
+        in: body
+        type: array
+        required: true
+        example: ["Hilton Garden Inn Rome Airport"]
+      - name: startDate
+        in: body
+        type: string
+        required: false
+        example: "2026-11-10"
+      - name: numberOfDates
+        in: body
+        type: integer
+        required: false
+        example: 30
+      - name: endDate
+        in: body
+        type: string
+        required: false
+        example: "2026-12-10"
+      - name: nights
+        in: body
+        type: integer
+        required: false
+        example: 1
+      - name: includeProviderPrices
+        in: body
+        type: boolean
+        required: false
+        example: false
+      - name: currency
+        in: body
+        type: string
+        required: false
+        example: "USD"
+    note: >-
+      Default `startDate` is tomorrow. `numberOfDates` caps at 60 — if you set
+      `endDate` it overrides `numberOfDates`. Set `includeProviderPrices: true` to
+      also open each date's provider list (Booking.com / Agoda / etc.) — adds
+      $0.002/hotel to the run.
+
+  - id: apify-google-travel.vacation-rentals
+    method: POST
+    path: /v2/acts/zet46~google-vacation-rentals-scraper/run-sync-get-dataset-items
+    summary: "Google Vacation Rentals search (Vrbo / Booking.com apartments) for a city or query — nightly price, sleeps, bedrooms, lat/long, amenities, images."
+    params:
+      - name: queries
+        in: body
+        type: array
+        required: true
+        example: ["Lisbon"]
+      - name: checkIn
+        in: body
+        type: string
+        required: false
+        example: "2026-11-10"
+      - name: checkOut
+        in: body
+        type: string
+        required: false
+        example: "2026-11-12"
+      - name: maxHotelsPerQuery
+        in: body
+        type: integer
+        required: false
+        example: 10
+      - name: minBedrooms
+        in: body
+        type: integer
+        required: false
+        example: 2
+      - name: minGuests
+        in: body
+        type: integer
+        required: false
+        example: 4
+      - name: maxPricePerNight
+        in: body
+        type: integer
+        required: false
+        example: 300
+      - name: onlyWithPrice
+        in: body
+        type: boolean
+        required: false
+        example: true
+      - name: includeProviderPrices
+        in: body
+        type: boolean
+        required: false
+        example: false
+    note: >-
+      Query is auto-wrapped to "vacation rentals in {query}". `minBedrooms` /
+      `minGuests` / `maxPricePerNight` filter server-side (rentals that fail the
+      filter are not charged for). `includeProviderPrices: true` opens each
+      rental's price list for Vrbo / Booking.com / etc. prices.
+
+base_url: https://api.apify.com
