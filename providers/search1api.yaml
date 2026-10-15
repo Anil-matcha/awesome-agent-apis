@@ -1,0 +1,143 @@
+provider: search1api
+docs_url: https://s1.dev/docs
+status: draft
+
+auth:
+  location: header
+  format: "Authorization: Bearer {key}"
+  bad_key_behavior: >-
+    A wrong key returns a real HTTP 401 with a JSON body
+    {"error": "Unauthorized: Invalid bearer credential", "message": "Unauthorized: Invalid bearer credential", "ok": false}
+    and a WWW-Authenticate: Bearer header. Note: sending NO Authorization header does
+    not return 401 on paid routes. It returns HTTP 402 Payment Required with a
+    machine-payment (MPP) challenge, because those routes also accept pay-per-request
+    payment without a key. That 402 is RFC 9457 problem+json (type, title, status,
+    detail, challengeId) with a WWW-Authenticate: Payment header, not the
+    {error, message, ok:false} envelope that the 401 and other errors use.
+
+pricing:
+  model: credits
+  amount: 19.0
+  currency: USD
+  free_tier: "100 free credits on signup, no card required. 1 credit = one search, news, crawl, sitemap or trending request."
+  source_url: https://s1.dev/pricing
+  checked: 2026-10-15
+  note: >-
+    Pay as you go from $5 ($1 = 1,000 credits, +5/20/60% bonus at $19/$99/$499, credits
+    never expire), or monthly plans: Basic $19 / 25,000 credits (~$0.76 per 1,000 requests),
+    Professional $99 / 150,000, Enterprise $499 / 1,000,000 (~$0.50 per 1,000); annual
+    Enterprise is ~$0.42 per 1,000. Heavier endpoints cost more: /ask 5 credits,
+    /extract 10, /deepcrawl 20. With crawl_results=n on /search or /news, each
+    successfully fetched page adds 1 credit.
+
+endpoints:
+  - id: search1api.search
+    method: POST
+    path: /search
+    summary: "Web search across one of 19 engines (Google, Bing, DuckDuckGo, Yandex, Baidu, Reddit, X, GitHub, arXiv, YouTube, WeChat, Bilibili, Wikipedia...), optionally returning full page content for the top results."
+    params:
+      - name: query
+        in: body
+        type: string
+        required: true
+        example: "model context protocol"
+      - name: search_service
+        in: body
+        type: string
+        required: false
+        example: "google"
+      - name: max_results
+        in: body
+        type: integer
+        required: false
+        example: 5
+      - name: crawl_results
+        in: body
+        type: integer
+        required: false
+        example: 0
+      - name: time_range
+        in: body
+        type: string
+        required: false
+        example: "week"
+      - name: include_sites
+        in: body
+        type: array
+        required: false
+        example: ["github.com"]
+    note: >-
+      search_service defaults to google. max_results is 1-50 (default 5).
+      crawl_results=n fetches the top n results as full text in the same call
+      (+1 credit per page fetched). time_range is day, week, month or year.
+      The body may also be an array of query objects to run several searches in one call.
+
+  - id: search1api.news
+    method: POST
+    path: /news
+    summary: "News search with a published_date on each result."
+    params:
+      - name: query
+        in: body
+        type: string
+        required: true
+        example: "AI agents"
+      - name: max_results
+        in: body
+        type: integer
+        required: false
+        example: 5
+      - name: time_range
+        in: body
+        type: string
+        required: false
+        example: "week"
+    note: "Takes the same optional params as search (search_service, crawl_results, include_sites, exclude_sites, language)."
+
+  - id: search1api.crawl
+    method: POST
+    path: /crawl
+    summary: "Fetch one URL and get its main content as clean text, with title and metadata."
+    params:
+      - name: url
+        in: body
+        type: string
+        required: true
+        example: "https://example.com"
+    note: "metadata.availability says whether author/publishedTime could be found; missing fields are listed in metadata.unavailableFields."
+
+  - id: search1api.sitemap
+    method: POST
+    path: /sitemap
+    summary: "List the URLs found on a site (from its sitemap, or all links with type=all)."
+    params:
+      - name: url
+        in: body
+        type: string
+        required: true
+        example: "https://s1.dev"
+      - name: type
+        in: body
+        type: string
+        required: false
+        example: "sitemap"
+    note: ""
+
+  - id: search1api.trending
+    method: POST
+    path: /trending
+    summary: "Current trending items on a platform such as GitHub or Hacker News."
+    params:
+      - name: search_service
+        in: body
+        type: string
+        required: true
+        example: "hackernews"
+      - name: max_results
+        in: body
+        type: integer
+        required: false
+        example: 5
+    note: ""
+
+base_url: https://api.search1api.com
