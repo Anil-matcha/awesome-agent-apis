@@ -1,0 +1,111 @@
+{
+  "_captured": "2026-10-18, real responses from https://api.restosignals.com with an anonymous trial key from POST /v1/register; only the key and account id are redacted",
+  "restosignals.register": {
+    "request": {
+      "method": "POST",
+      "path": "/v1/register"
+    },
+    "status": 200,
+    "response": {
+      "api_key": "<redacted>",
+      "credits": 15
+    }
+  },
+  "restosignals.list-openings": {
+    "request": {
+      "method": "GET",
+      "path": "/v1/openings",
+      "query": {
+        "state": "NY",
+        "limit": 1
+      }
+    },
+    "status": 200,
+    "response": {
+      "count": 1,
+      "credits_used": 1,
+      "credits_remaining": 14,
+      "truncated_by_balance": false,
+      "contacts_included": false,
+      "openings": [
+        {
+          "id": 705067,
+          "business_name": "DINER 24 BROADWAY NYC LLC.",
+          "dba": "DINER 24 BROADWAY NYC LLC.",
+          "address": "1674 Broadway",
+          "city": "New York",
+          "state": "NY",
+          "county": "New York",
+          "lat": 40.76285,
+          "lng": -73.98313,
+          "opening_score": 100,
+          "status": "opening",
+          "signal_types": [
+            "business",
+            "food_permit",
+            "liquor"
+          ],
+          "earliest_signal_date": "2026-08-25",
+          "latest_signal_date": "2026-10-16",
+          "contact": {
+            "locked": true,
+            "available": true,
+            "unlock": "Subscribe to reveal the owner name and contact details."
+          }
+        }
+      ]
+    }
+  },
+  "restosignals.account": {
+    "request": {
+      "method": "GET",
+      "path": "/v1/account"
+    },
+    "status": 200,
+    "response": {
+      "account_id": "<redacted>",
+      "email": null,
+      "plan": "free",
+      "credits": 14,
+      "keys": [
+        {
+          "key": "<redacted>",
+          "label": "trial",
+          "created_at": "2026-10-17T18:54:47.868714+00:00",
+          "last_used_at": "2026-10-17T18:54:56.449327+00:00"
+        }
+      ]
+    }
+  },
+  "bad_key": {
+    "request": {
+      "method": "GET",
+      "path": "/v1/openings",
+      "query": {
+        "state": "NY",
+        "limit": 1
+      },
+      "headers": {
+        "X-API-Key": "bad-key-123"
+      }
+    },
+    "status": 401,
+    "response": {
+      "detail": "Missing or invalid X-API-Key."
+    }
+  },
+  "missing_key": {
+    "request": {
+      "method": "GET",
+      "path": "/v1/openings",
+      "query": {
+        "state": "NY",
+        "limit": 1
+      }
+    },
+    "status": 401,
+    "response": {
+      "detail": "Missing or invalid X-API-Key."
+    }
+  }
+}
