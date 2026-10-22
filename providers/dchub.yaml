@@ -1,0 +1,80 @@
+provider: dchub
+docs_url: https://dchub.cloud/docs
+status: draft
+
+auth:
+  location: header
+  format: "X-API-Key: {key}"
+  bad_key_behavior: >-
+    Depends on the endpoint. On keyless endpoints (markets, DCPI scores, listings)
+    a bad key is ignored: the call returns HTTP 200 with the anonymous preview body
+    (`_gated: true`, `_preview_only: true`, a `_locked_fields` list), so check those
+    body flags rather than the status code. On key-required endpoints such as
+    /api/energy/prices/{state}, a bad key returns a real HTTP 401 with
+    {"success": false, "error": "invalid_api_key", "message": "Invalid or inactive
+    API key", ...}; a missing key there returns HTTP 403 with
+    {"error": "plan_required", "current_plan": "anonymous", ...}.
+
+pricing:
+  model: flat_subscription
+  currency: USD
+  free_tier: "Market list, DCPI verdicts and composite scores, and Capacity Source listings need no key. A free developer key is one POST to /api/v1/keys/claim (no email, no card) and adds previews plus a small daily allowance of full answers."
+  source_url: https://dchub.cloud/pricing
+  checked: 2026-10-22
+  note: "Paid plans: dchub.cloud/pricing. The same data is also served as a hosted MCP server (94 tools) at https://dchub.cloud/mcp."
+
+endpoints:
+  - id: dchub.list-markets
+    method: GET
+    path: /api/v1/markets
+    summary: "List data-center markets with facility counts, cities and total power (MW)."
+    params:
+      - name: limit
+        in: query
+        type: integer
+        required: false
+        example: 3
+    note: "Keyless. Each response carries a `provenance` block with basis and a cite_as line."
+
+  - id: dchub.get-dcpi-score
+    method: GET
+    path: /api/v1/dcpi/scores/{market_slug}
+    summary: "Data Center Power Index for one market: a BUILD/CAUTION/AVOID verdict and composite score for how readily data centers can get grid power there."
+    params:
+      - name: market_slug
+        in: path
+        type: string
+        required: true
+        example: "ashburn"
+    note: "Keyless for the verdict and composite score; sub-scores are listed in `_locked_fields` and need a paid key. Aliases resolve (northern-virginia returns `_canonical_slug: ashburn`)."
+
+  - id: dchub.queue-refined
+    method: GET
+    path: /api/v1/interconnection-queue/refined
+    summary: "Filtered view of an ISO's generation interconnection queue, with citation and as-of attribution."
+    params:
+      - name: iso
+        in: query
+        type: string
+        required: true
+        example: "ERCOT"
+      - name: limit
+        in: query
+        type: integer
+        required: false
+        example: 3
+    note: "Keyless calls return a preview with `_total_available` and locked fields; full rows need a key."
+
+  - id: dchub.energy-prices
+    method: GET
+    path: /api/energy/prices/{state}
+    summary: "Retail and wholesale electricity prices for a US state."
+    params:
+      - name: state
+        in: path
+        type: string
+        required: true
+        example: "AZ"
+    note: "Key required (403 plan_required without one, 401 invalid_api_key with a bad one)."
+
+base_url: https://dchub.cloud
