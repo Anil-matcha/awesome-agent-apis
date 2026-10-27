@@ -1,0 +1,217 @@
+{
+  "success": {
+    "observed_at_utc": "2026-10-23T14:13:35.401Z",
+    "request": {
+      "method": "GET",
+      "url": "https://api.blockvectra.com/v1/data/robinhood_mainnet/status/freshness",
+      "authentication": "x-api-key; credential omitted; QA key revoked after the original run"
+    },
+    "http_status": 200,
+    "original_response_bytes": 3536,
+    "original_response_sha256": "42b747e42185b61aaa260b2dbd30ef30553d25c3a667de52882188c49f3e7d0d",
+    "response": {
+      "data": [
+        {
+          "dataset": "blocks",
+          "category": "raw",
+          "max_block_number": 96000839,
+          "max_day": null,
+          "max_time": "2026-10-23T14:13:30Z",
+          "seconds_behind": 0,
+          "blocks_behind": null,
+          "days_behind": null,
+          "checked_at": "2026-10-23T14:13:34Z"
+        },
+        {
+          "dataset": "logs",
+          "category": "raw",
+          "max_block_number": 96000862,
+          "max_day": null,
+          "max_time": null,
+          "seconds_behind": null,
+          "blocks_behind": null,
+          "days_behind": null,
+          "checked_at": "2026-10-23T14:13:34Z"
+        },
+        {
+          "dataset": "traces",
+          "category": "raw",
+          "max_block_number": 96000862,
+          "max_day": null,
+          "max_time": null,
+          "seconds_behind": null,
+          "blocks_behind": null,
+          "days_behind": null,
+          "coverage_from_block": 72050949,
+          "coverage_to_block": 96000862,
+          "coverage_complete": false,
+          "checked_at": "2026-10-23T14:13:34Z"
+        },
+        {
+          "dataset": "transactions",
+          "category": "raw",
+          "max_block_number": 96000862,
+          "max_day": null,
+          "max_time": null,
+          "seconds_behind": null,
+          "blocks_behind": null,
+          "days_behind": null,
+          "checked_at": "2026-10-23T14:13:34Z"
+        },
+        {
+          "dataset": "dex_prices",
+          "category": "derived",
+          "max_block_number": null,
+          "max_day": "2026-10-07",
+          "max_time": "2026-10-07T00:00:00Z",
+          "seconds_behind": 1433610,
+          "blocks_behind": null,
+          "days_behind": 16,
+          "checked_at": "2026-10-23T14:13:34Z"
+        },
+        {
+          "dataset": "dex_swaps",
+          "category": "derived",
+          "max_block_number": 96000839,
+          "max_day": null,
+          "max_time": "2026-10-23T14:13:30Z",
+          "seconds_behind": 0,
+          "blocks_behind": 0,
+          "days_behind": null,
+          "checked_at": "2026-10-23T14:13:34Z"
+        },
+        {
+          "dataset": "erc1155_balances",
+          "category": "derived",
+          "max_block_number": null,
+          "max_day": null,
+          "max_time": null,
+          "seconds_behind": null,
+          "blocks_behind": null,
+          "days_behind": null,
+          "checked_at": "2026-10-23T14:13:34Z"
+        },
+        {
+          "dataset": "erc1155_transfers",
+          "category": "derived",
+          "max_block_number": 96000836,
+          "max_day": null,
+          "max_time": "2026-10-23T14:13:30Z",
+          "seconds_behind": 0,
+          "blocks_behind": 3,
+          "days_behind": null,
+          "checked_at": "2026-10-23T14:13:34Z"
+        },
+        {
+          "dataset": "erc20_transfers",
+          "category": "derived",
+          "max_block_number": 96000839,
+          "max_day": null,
+          "max_time": "2026-10-23T14:13:30Z",
+          "seconds_behind": 0,
+          "blocks_behind": 0,
+          "days_behind": null,
+          "checked_at": "2026-10-23T14:13:34Z"
+        },
+        {
+          "dataset": "erc721_transfers",
+          "category": "derived",
+          "max_block_number": 96000832,
+          "max_day": null,
+          "max_time": "2026-10-23T14:13:29Z",
+          "seconds_behind": 1,
+          "blocks_behind": 7,
+          "days_behind": null,
+          "checked_at": "2026-10-23T14:13:34Z"
+        },
+        {
+          "dataset": "nft_owners",
+          "category": "derived",
+          "max_block_number": 83165210,
+          "max_day": null,
+          "max_time": "2026-10-08T08:13:50Z",
+          "seconds_behind": 1317580,
+          "blocks_behind": 12835629,
+          "days_behind": null,
+          "checked_at": "2026-10-23T14:13:34Z"
+        },
+        {
+          "dataset": "stock_daily",
+          "category": "derived",
+          "max_block_number": null,
+          "max_day": "2026-10-13",
+          "max_time": "2026-10-13T00:00:00Z",
+          "seconds_behind": 915210,
+          "blocks_behind": null,
+          "days_behind": 10,
+          "checked_at": "2026-10-23T14:13:34Z"
+        },
+        {
+          "dataset": "stocks",
+          "category": "derived",
+          "max_block_number": 58748161,
+          "max_day": null,
+          "max_time": "2026-09-09T18:07:09Z",
+          "seconds_behind": 3787581,
+          "blocks_behind": 37252678,
+          "days_behind": null,
+          "checked_at": "2026-10-23T14:13:34Z"
+        },
+        {
+          "dataset": "token_balances",
+          "category": "derived",
+          "max_block_number": null,
+          "max_day": null,
+          "max_time": null,
+          "seconds_behind": null,
+          "blocks_behind": null,
+          "days_behind": null,
+          "checked_at": "2026-10-23T14:13:34Z"
+        },
+        {
+          "dataset": "tokens",
+          "category": "derived",
+          "max_block_number": 95640903,
+          "max_day": null,
+          "max_time": "2026-10-23T03:46:39Z",
+          "seconds_behind": 37611,
+          "blocks_behind": 359936,
+          "days_behind": null,
+          "checked_at": "2026-10-23T14:13:34Z"
+        }
+      ],
+      "meta": {
+        "chain": "robinhood_mainnet",
+        "chain_slug": "ROBINHOOD_MAINNET",
+        "chain_external_id": "eip155:4663",
+        "as_of_block": 96000839,
+        "safe_block": 95994089,
+        "finalized_block": 95990393,
+        "coverage": "full",
+        "refreshed_at": "2026-10-23T14:13:34Z"
+      }
+    }
+  },
+  "missing_key": {
+    "observed_at_utc": "2026-10-27T02:00:18.976878+00:00",
+    "request": {
+      "method": "GET",
+      "url": "https://api.blockvectra.com/v1/data/robinhood_mainnet/status/freshness",
+      "authentication": "none"
+    },
+    "http_status": 401,
+    "response": {
+      "error": {
+        "code": "missing_api_key",
+        "message": "missing API key: send it in the x-api-key header",
+        "data": {
+          "reason": "missing_api_key",
+          "docs_url": "https://docs.blockvectra.com/en/errors/#missing_api_key",
+          "retryable": false,
+          "request_id": "01a17b16-42cf-7763-b9aa-23e6a6457375"
+        }
+      }
+    }
+  },
+  "note": "Historical authenticated QA capture, not a current freshness or coverage guarantee. No new key was issued for this contribution. The missing-key observation and pricing check are dated separately."
+}

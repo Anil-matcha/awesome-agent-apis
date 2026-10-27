@@ -1,0 +1,49 @@
+provider: blockvectra
+docs_url: https://docs.blockvectra.com/en/api/data/?ref=gh-agent-apis
+status: draft
+
+base_url: https://api.blockvectra.com
+
+auth:
+  location: header
+  format: "x-api-key: {key}"
+  bad_key_behavior: >-
+    Missing-key GET /v1/data/robinhood_mainnet/status/freshness returned HTTP 401
+    on 2026-10-27, with JSON error.code=missing_api_key, error.message,
+    and error.data containing reason, docs_url, retryable and request_id.
+    An arbitrary invalid-key value was not tested in this contribution.
+
+pricing:
+  model: credits
+  amount: 0.0000001
+  currency: USD
+  unit: CU
+  free_tier: >-
+    Public plans reports signup_units=30000 and monthly_units=30000,
+    1000 CU/unit, a 30-day free window and a free account cap of 25 calls/s.
+    Free refills stop after the first paid top-up; this is not unlimited free usage.
+  source_url: https://console-api.blockvectra.com/v1/plans
+  checked: "2026-10-27"
+  note: >-
+    The quoted amount is USD per CU, computed as 1/(10000 units/USD * 1000 CU/unit).
+    data.status_freshness costs 1 CU in this dated plans response.
+    Only successful 2xx responses are billed. Check current plans before use.
+
+endpoints:
+  - id: blockvectra.dataset-freshness
+    method: GET
+    path: /v1/data/{chain}/status/freshness
+    summary: "Inspect indexed dataset watermarks before using a chain's Data API."
+    capability: market_data.crypto
+    params:
+      - name: chain
+        in: path
+        type: string
+        required: true
+        example: robinhood_mainnet
+    note: >-
+      Choose a published chain slug from GET /v1/data/chains.
+      The captured authenticated success is from 2026-10-23 and contains 15 dataset
+      rows; it is not a current-data or full-history guarantee. Inspect the returned
+      timestamps, coverage and finality. API keys are created through the documented
+      self-serve wallet sign-in flow; no sales approval is required.
