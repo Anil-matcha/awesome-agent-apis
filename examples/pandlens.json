@@ -1,0 +1,62 @@
+{
+  "_captured": "2026-10-27, real responses from https://api.pandlens.com with a Free-plan key; the key itself is not included",
+  "pandlens.lookup": {
+    "request": {
+      "method": "GET",
+      "path": "/v1/lookup/1012JS/1"
+    },
+    "status": 200,
+    "response": {
+      "address": {
+        "postcode": "1012 JS",
+        "huisnummer": 1,
+        "straat": "Dam",
+        "woonplaats": "Amsterdam"
+      },
+      "bag": {
+        "nummeraanduidingId": "0363200003761447",
+        "verblijfsobjectId": "0363010003761571",
+        "pandId": "0363100012168052",
+        "openbareRuimteId": "0363300000003186"
+      },
+      "administrative": {
+        "buurtcode": "BU0363AE02",
+        "wijkcode": "WK0363AE",
+        "gemeentecode": "GM0363",
+        "gemeentenaam": "Amsterdam"
+      },
+      "location": {
+        "latitude": 52.373293,
+        "longitude": 4.893718
+      }
+    }
+  },
+  "pandlens.usage": {
+    "request": {
+      "method": "GET",
+      "path": "/v1/usage"
+    },
+    "status": 200,
+    "response": {
+      "plan": "Free",
+      "usedThisMonth": 48,
+      "monthlyQuota": 100,
+      "remainingThisMonth": 52,
+      "monthlyPriceEur": 0,
+      "costThisMonthEur": 0.0,
+      "month": "2026-10-01"
+    }
+  },
+  "bad_key": {
+    "request": {
+      "method": "GET",
+      "path": "/v1/lookup/1012JS/1",
+      "headers": {
+        "X-Api-Key": "bad_key_123"
+      }
+    },
+    "status": 401,
+    "response": null,
+    "note": "Empty body (content-length 0); same for a missing header."
+  }
+}

@@ -1,0 +1,119 @@
+provider: pandlens
+docs_url: https://pandlens.nl/docs
+status: draft
+
+auth:
+  location: header
+  format: "X-Api-Key: {key}"
+  bad_key_behavior: >-
+    A bad or missing key returns a real HTTP 401 with an empty body
+    (content-length 0, no JSON envelope), so check the status code rather
+    than trying to parse the body. Separately, a key over its per-minute
+    rate limit gets 429 and a key over its monthly plan quota gets 402.
+
+pricing:
+  model: per_call
+  amount: 0.01
+  currency: EUR
+  free_tier: "100 lookups per month on the Free plan, no credit card required. Free keys are self-serve from https://pandlens.nl/portal."
+  source_url: https://pandlens.nl/#prijs
+  checked: 2026-10-27
+  note: "Prices exclude VAT. Pay-as-you-go is EUR 0.01 per lookup with no monthly fee; monthly plans are Starter EUR 19 / 2,500 lookups and Pro EUR 79 / 15,000 lookups. GET /v1/usage shows the current plan, usage and cost."
+
+endpoints:
+  - id: pandlens.lookup
+    method: GET
+    path: /v1/lookup/{postcode}/{huisnummer}
+    summary: "Resolve one Dutch address (postcode + house number) to its street, city, BAG identifiers, buurt/wijk/municipality codes and WGS84 coordinates."
+    params:
+      - name: postcode
+        in: path
+        type: string
+        required: true
+        example: "1012JS"
+      - name: huisnummer
+        in: path
+        type: integer
+        required: true
+        example: 1
+      - name: huisletter
+        in: query
+        type: string
+        required: false
+        example: "A"
+      - name: toevoeging
+        in: query
+        type: string
+        required: false
+        example: "2"
+    note: "Postcode is accepted without the space. huisletter (house letter) and toevoeging (addition) pick one unit when a house number has several."
+
+  - id: pandlens.enrich-address
+    method: GET
+    path: /v1/address/{postcode}/{huisnummer}
+    summary: "Full property payload for one Dutch address: BAG building and unit data, EP-Online energy label, 3DBAG building and rooftop solar, Kadaster parcel size, CBS neighbourhood statistics and buurt WOZ series, heritage, proximity, climate and noise blocks."
+    params:
+      - name: postcode
+        in: path
+        type: string
+        required: true
+        example: "1012JS"
+      - name: huisnummer
+        in: path
+        type: integer
+        required: true
+        example: 1
+      - name: include
+        in: query
+        type: string
+        required: false
+        example: "derived"
+      - name: includeHistory
+        in: query
+        type: boolean
+        required: false
+        example: false
+    note: "Each source block carries a sourceAsOf date. Per-domain sub-paths (/energy, /building, /plot, /neighbourhood, /environment, /solar) return a single block. Per-address lookups only; bulk download of energy labels is not offered."
+
+  - id: pandlens.energy-label
+    method: GET
+    path: /v1/address/{postcode}/{huisnummer}/energy
+    summary: "Registered EP-Online energy label for one Dutch address (label class, energy index, construction year), optionally with label history."
+    params:
+      - name: postcode
+        in: path
+        type: string
+        required: true
+        example: "1012JS"
+      - name: huisnummer
+        in: path
+        type: integer
+        required: true
+        example: 1
+      - name: includeHistory
+        in: query
+        type: boolean
+        required: false
+        example: true
+    note: ""
+
+  - id: pandlens.buurt
+    method: GET
+    path: /v1/buurt/{buurtcode}
+    summary: "CBS neighbourhood (buurt) statistics by buurt code, without an address lookup."
+    params:
+      - name: buurtcode
+        in: path
+        type: string
+        required: true
+        example: "BU0363AE02"
+    note: "Buurt codes come back in the administrative block of lookup and enrich-address responses."
+
+  - id: pandlens.usage
+    method: GET
+    path: /v1/usage
+    summary: "Validate the key and read the current plan, lookups used and remaining this month, and cost so far."
+    params: []
+    note: ""
+
+base_url: https://api.pandlens.com
