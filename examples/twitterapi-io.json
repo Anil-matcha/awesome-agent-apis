@@ -1,0 +1,421 @@
+{
+  "_captured": "2026-10-29, real responses from https://api.twitterapi.io with a real key (key not included). search tweets array trimmed to the first item for size; all other fields unchanged.",
+  "twitterapi-io.user-info": {
+    "request": {
+      "method": "GET",
+      "path": "/twitter/user/info",
+      "query": {
+        "userName": "jack"
+      }
+    },
+    "status": 200,
+    "response": {
+      "status": "success",
+      "msg": "success",
+      "data": {
+        "id": "12",
+        "name": "jack",
+        "userName": "jack",
+        "location": "",
+        "url": "https://t.co/ZEpOg6rn5L",
+        "description": "no state is the best state",
+        "entities": {
+          "description": {},
+          "url": {
+            "urls": [
+              {
+                "display_url": "primal.net/jack",
+                "expanded_url": "http://primal.net/jack",
+                "indices": [
+                  0,
+                  23
+                ],
+                "url": "https://t.co/ZEpOg6rn5L"
+              }
+            ]
+          }
+        },
+        "protected": false,
+        "isVerified": false,
+        "isBlueVerified": true,
+        "verifiedType": null,
+        "followers": 12538517,
+        "following": 3,
+        "favouritesCount": 41077,
+        "statusesCount": 31111,
+        "mediaCount": 2976,
+        "createdAt": "2006-03-21T20:50:14.000000Z",
+        "coverPicture": "https://pbs.twimg.com/profile_banners/12/1742427520",
+        "profilePicture": "https://pbs.twimg.com/profile_images/1661201415899951105/azNjKOSH_normal.jpg",
+        "canDm": true,
+        "affiliatesHighlightedLabel": {
+          "label": {
+            "badge": {
+              "url": "https://pbs.twimg.com/profile_images/1285655593592791040/HtwPZgej_bigger.jpg"
+            },
+            "description": "Square",
+            "url": {
+              "url": "https://twitter.com/Square",
+              "url_type": "DeepLink"
+            },
+            "user_label_display_type": "Badge",
+            "user_label_type": "BusinessLabel"
+          }
+        },
+        "isAutomated": false,
+        "automatedBy": null,
+        "pinnedTweetIds": [
+          "1833951636005552366"
+        ],
+        "profile_interstitial_type": ""
+      }
+    }
+  },
+  "twitterapi-io.advanced-search": {
+    "request": {
+      "method": "GET",
+      "path": "/twitter/tweet/advanced_search",
+      "query": {
+        "query": "from:jack",
+        "queryType": "Latest"
+      }
+    },
+    "status": 200,
+    "response": {
+      "tweets": [
+        {
+          "type": "tweet",
+          "id": "2115489742930526506",
+          "url": "https://x.com/jack/status/2115489742930526506",
+          "twitterUrl": "https://twitter.com/jack/status/2115489742930526506",
+          "text": "RT @buzzdotxyz: Building Buzz inside Buzz.\n\nJuno shares a first pass. The team gives feedback. The next version comes back into the same co…",
+          "source": "",
+          "retweetCount": 13,
+          "replyCount": 4,
+          "likeCount": 78,
+          "quoteCount": 2,
+          "viewCount": 22792,
+          "createdAt": "Wed Oct 28 17:03:53 +0000 2026",
+          "lang": "en",
+          "bookmarkCount": 21,
+          "isReply": false,
+          "inReplyToId": null,
+          "conversationId": "2115489742930526506",
+          "displayTextRange": [
+            0,
+            140
+          ],
+          "inReplyToUserId": null,
+          "inReplyToUsername": null,
+          "author": {
+            "type": "user",
+            "userName": "jack",
+            "url": "https://x.com/jack",
+            "twitterUrl": "https://twitter.com/jack",
+            "id": "12",
+            "name": "jack",
+            "isVerified": false,
+            "isBlueVerified": true,
+            "verifiedType": null,
+            "profilePicture": "https://pbs.twimg.com/profile_images/1661201415899951105/azNjKOSH_normal.jpg",
+            "coverPicture": "https://pbs.twimg.com/profile_banners/12/1742427520",
+            "description": "",
+            "location": "",
+            "followers": 12538518,
+            "following": 3,
+            "status": "",
+            "canDm": true,
+            "canMediaTag": true,
+            "createdAt": "Tue Mar 21 20:50:14 +0000 2006",
+            "entities": {
+              "description": {
+                "urls": []
+              },
+              "url": {}
+            },
+            "fastFollowersCount": 0,
+            "favouritesCount": 41077,
+            "hasCustomTimelines": true,
+            "isTranslator": true,
+            "mediaCount": 2976,
+            "statusesCount": 31111,
+            "withheldInCountries": [],
+            "affiliatesHighlightedLabel": {
+              "label": {
+                "badge": {
+                  "url": "https://pbs.twimg.com/profile_images/1285655593592791040/HtwPZgej_bigger.jpg"
+                },
+                "description": "Square",
+                "url": {
+                  "url": "https://twitter.com/Square",
+                  "url_type": "DeepLink"
+                },
+                "user_label_display_type": "Badge",
+                "user_label_type": "BusinessLabel"
+              }
+            },
+            "possiblySensitive": false,
+            "pinnedTweetIds": [
+              "1833951636005552366"
+            ],
+            "profile_bio": {
+              "description": "no state is the best state",
+              "entities": {
+                "description": {},
+                "url": {
+                  "urls": [
+                    {
+                      "display_url": "primal.net/jack",
+                      "expanded_url": "http://primal.net/jack",
+                      "indices": [
+                        0,
+                        23
+                      ],
+                      "url": "https://t.co/ZEpOg6rn5L"
+                    }
+                  ]
+                }
+              }
+            },
+            "isAutomated": false,
+            "automatedBy": null,
+            "protected": false
+          },
+          "extendedEntities": {},
+          "card": null,
+          "place": {},
+          "entities": {
+            "user_mentions": [
+              {
+                "id_str": "2087252168323510274",
+                "indices": [
+                  3,
+                  14
+                ],
+                "name": "Buzz",
+                "screen_name": "buzzdotxyz"
+              }
+            ]
+          },
+          "quoted_tweet": null,
+          "retweeted_tweet": {
+            "type": "tweet",
+            "id": "2115471163275038809",
+            "url": "https://x.com/buzzdotxyz/status/2115471163275038809",
+            "twitterUrl": "https://twitter.com/buzzdotxyz/status/2115471163275038809",
+            "text": "Building Buzz inside Buzz.\n\nJuno shares a first pass. The team gives feedback. The next version comes back into the same conversation.\n\nA short look at how we design together. https://t.co/mFjdZOqncc",
+            "source": "",
+            "retweetCount": 13,
+            "replyCount": 4,
+            "likeCount": 78,
+            "quoteCount": 2,
+            "viewCount": 22792,
+            "createdAt": "Wed Oct 28 15:50:03 +0000 2026",
+            "lang": "en",
+            "bookmarkCount": 21,
+            "isReply": false,
+            "inReplyToId": null,
+            "conversationId": "2115471163275038809",
+            "displayTextRange": [
+              0,
+              175
+            ],
+            "inReplyToUserId": null,
+            "inReplyToUsername": null,
+            "author": {
+              "type": "user",
+              "userName": "buzzdotxyz",
+              "url": "https://x.com/buzzdotxyz",
+              "twitterUrl": "https://twitter.com/buzzdotxyz",
+              "id": "2087252168323510274",
+              "name": "Buzz",
+              "isVerified": false,
+              "isBlueVerified": true,
+              "verifiedType": null,
+              "profilePicture": "https://pbs.twimg.com/profile_images/2095114230374465541/MHBjKaDL_normal.jpg",
+              "coverPicture": "https://pbs.twimg.com/profile_banners/2087252168323510274/1788374927",
+              "description": "",
+              "location": "Internet",
+              "followers": 1033,
+              "following": 5,
+              "status": "",
+              "canDm": false,
+              "canMediaTag": true,
+              "createdAt": "Tue Aug 11 19:26:13 +0000 2026",
+              "entities": {
+                "description": {
+                  "urls": []
+                },
+                "url": {}
+              },
+              "fastFollowersCount": 0,
+              "favouritesCount": 48,
+              "hasCustomTimelines": true,
+              "isTranslator": false,
+              "mediaCount": 3,
+              "statusesCount": 54,
+              "withheldInCountries": [],
+              "affiliatesHighlightedLabel": {},
+              "possiblySensitive": false,
+              "pinnedTweetIds": [],
+              "profile_bio": {
+                "description": "Where people and agents work together.\n\nJoin the community: https://t.co/AxKTJjd5QE",
+                "entities": {
+                  "description": {
+                    "urls": [
+                      {
+                        "display_url": "feedback.communities.buzz.xyz/invite/v2.IWgx…",
+                        "expanded_url": "https://feedback.communities.buzz.xyz/invite/v2.IWgx0ZeqInsUqtItPKxhi_9B_rk7p1O26iku0EkB6uc",
+                        "indices": [
+                          60,
+                          83
+                        ],
+                        "url": "https://t.co/AxKTJjd5QE"
+                      }
+                    ]
+                  },
+                  "url": {
+                    "urls": [
+                      {
+                        "display_url": "buzz.xyz",
+                        "expanded_url": "http://buzz.xyz",
+                        "indices": [
+                          0,
+                          23
+                        ],
+                        "url": "https://t.co/l5gVtaRIDU"
+                      }
+                    ]
+                  }
+                }
+              },
+              "isAutomated": false,
+              "automatedBy": null,
+              "protected": false
+            },
+            "extendedEntities": {
+              "media": [
+                {
+                  "additional_media_info": {
+                    "monetizable": false
+                  },
+                  "allow_download_status": {
+                    "allow_download": true
+                  },
+                  "display_url": "pic.x.com/mFjdZOqncc",
+                  "expanded_url": "https://x.com/buzzdotxyz/status/2115471163275038809/video/1",
+                  "ext_master_playlist_only": [],
+                  "ext_media_availability": {
+                    "status": "Available"
+                  },
+                  "ext_playlists": [],
+                  "id_str": "2115471018756091904",
+                  "indices": [
+                    176,
+                    199
+                  ],
+                  "media_key": "13_2115471018756091904",
+                  "media_results": {
+                    "id": "QXBpTWVkaWFSZXN1bHRzOgwABAoAAR1bqa7tlzAAAAA=",
+                    "result": {
+                      "__typename": "ApiMedia",
+                      "id": "QXBpTWVkaWE6DAAECgABHVupru2XMAAAAA==",
+                      "media_key": "13_2115471018756091904"
+                    }
+                  },
+                  "media_url_https": "https://pbs.twimg.com/amplify_video_thumb/2115471018756091904/img/bHm4vc9u242HcNf9.jpg",
+                  "original_info": {
+                    "focus_rects": [],
+                    "height": 1920,
+                    "width": 1080
+                  },
+                  "sizes": {
+                    "large": {
+                      "h": 1920,
+                      "w": 1080
+                    }
+                  },
+                  "type": "video",
+                  "url": "https://t.co/mFjdZOqncc",
+                  "video_info": {
+                    "aspect_ratio": [
+                      9,
+                      16
+                    ],
+                    "duration_millis": 23333,
+                    "variants": [
+                      {
+                        "content_type": "application/x-mpegURL",
+                        "url": "https://video-s.twimg.com/amplify_video/2115471018756091904/pl/eERr1d9rPSjpGeu5.m3u8?tag=29&v=cfc"
+                      },
+                      {
+                        "bitrate": 632000,
+                        "content_type": "video/mp4",
+                        "url": "https://video-s.twimg.com/amplify_video/2115471018756091904/vid/avc1/320x568/Wc5Lgnqh5hSuxpWF.mp4?tag=29"
+                      },
+                      {
+                        "bitrate": 950000,
+                        "content_type": "video/mp4",
+                        "url": "https://video-s.twimg.com/amplify_video/2115471018756091904/vid/avc1/480x852/TmEoglcCGttiir7A.mp4?tag=29"
+                      },
+                      {
+                        "bitrate": 2176000,
+                        "content_type": "video/mp4",
+                        "url": "https://video-s.twimg.com/amplify_video/2115471018756091904/vid/avc1/720x1280/ESVoCG5WbfFUfDDA.mp4?tag=29"
+                      },
+                      {
+                        "bitrate": 10368000,
+                        "content_type": "video/mp4",
+                        "url": "https://video-s.twimg.com/amplify_video/2115471018756091904/vid/avc1/1080x1920/fgNBrvosM_wC02P7.mp4?tag=29"
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            "card": null,
+            "place": {},
+            "entities": {},
+            "quoted_tweet": null,
+            "retweeted_tweet": null,
+            "isLimitedReply": false,
+            "communityInfo": null,
+            "article": null
+          },
+          "isLimitedReply": false,
+          "communityInfo": null,
+          "article": null
+        }
+      ],
+      "has_next_page": true,
+      "next_cursor": "DAADDAABCgABHVu6tn1bQSoKAAIdVjThmdqB-gAIAAIAAAACCAADAAAAAAgABAAAAAAKAAUdXD7algAnEAoABh1cPtqV_9jwCwAHAAAA8EVtUEM2d0FBQWZRL2dHSk4wdkdwL0FBQUFCUWRWandtMU5weHdCMWFoQ0VqMTNEbUhWWTA0Wm5hZ2ZvZFZzK21MOXZBK0IxVzR1eHJXdUR0SFZtVmVIUWFjVW9kV29IcHlaYVJOUjFhZzRhL2xqRXdIVmJpU0RKYmdURWRWcEVYbzFzUm1oMWJ1clo5VzBFcUhWYlAya29ia0FVZFdvTHl3cGNndmgxV3o4UGltMENCSFZiY2duVGJZS2NkVnQ1OHdsdUEraDFXM1pST1dqRm9IVlpBT1lCYVlXSWRXb0VWbTVaQUp4MVdOblBaRzRHYQAA"
+    }
+  },
+  "_bad_key": {
+    "request": {
+      "method": "GET",
+      "path": "/twitter/user/info",
+      "headers": {
+        "x-api-key": "invalid-key-for-test"
+      }
+    },
+    "status": 401,
+    "response": {
+      "error": "Unauthorized",
+      "message": "API key is invalid"
+    }
+  },
+  "_missing_key": {
+    "request": {
+      "method": "GET",
+      "path": "/twitter/user/info",
+      "headers": {}
+    },
+    "status": 403,
+    "response": {
+      "error": "Forbidden",
+      "message": "API key required. Please include x-api-key in your request header. Get a free API key at https://twitterapi.io",
+      "code": -1
+    }
+  }
+}

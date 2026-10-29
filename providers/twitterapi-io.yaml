@@ -1,0 +1,104 @@
+provider: twitterapi-io
+docs_url: https://docs.twitterapi.io/introduction
+status: draft
+
+auth:
+  location: header
+  format: "x-api-key: {key}"
+  bad_key_behavior: >-
+    Real HTTP status codes, not 200-with-error. An invalid key returns HTTP 401
+    with {"error": "Unauthorized", "message": "API key is invalid"}. A missing
+    key returns HTTP 403 with {"error": "Forbidden", "message": "API key
+    required. Please include x-api-key in your request header. ...", "code": -1}.
+    Successful calls return HTTP 200 and (on most endpoints) a body with
+    "status": "success"; check both the status code and `status` in the body.
+  note: "`Authorization: Bearer {key}` is also accepted as an alias for the x-api-key header."
+
+pricing:
+  model: credits
+  currency: USD
+  free_tier: "Free credits on signup; see https://twitterapi.io/pricing"
+  source_url: https://twitterapi.io/pricing
+  checked: 2026-10-29
+  note: "Pay-as-you-go credits charged per returned item/request; no monthly subscription required. See the pricing page for current rates."
+
+endpoints:
+  - id: twitterapi-io.advanced-search
+    method: GET
+    path: /twitter/tweet/advanced_search
+    summary: "Search X (Twitter) posts with full X search syntax (keywords, from:, since:/until:, min_faves:, etc.), newest or top first."
+    params:
+      - name: query
+        in: query
+        type: string
+        required: true
+        example: "from:jack"
+      - name: queryType
+        in: query
+        type: string
+        required: true
+        example: "Latest"
+      - name: cursor
+        in: query
+        type: string
+        required: false
+        example: ""
+    note: "`queryType` is Latest or Top. Paginate by passing `next_cursor` from the previous response while `has_next_page` is true; the first page uses an empty cursor."
+
+  - id: twitterapi-io.user-info
+    method: GET
+    path: /twitter/user/info
+    summary: "Public profile of one X user by handle: bio, follower/following counts, verification, creation date, pinned tweet ids."
+    params:
+      - name: userName
+        in: query
+        type: string
+        required: true
+        example: "jack"
+    note: "Pass the handle without the leading @. Response is wrapped as {status, msg, data}."
+
+  - id: twitterapi-io.user-last-tweets
+    method: GET
+    path: /twitter/user/last_tweets
+    summary: "A user's most recent tweets (plus pinned tweet), newest first, with cursor pagination."
+    params:
+      - name: userName
+        in: query
+        type: string
+        required: true
+        example: "jack"
+      - name: includeReplies
+        in: query
+        type: boolean
+        required: false
+        example: false
+      - name: cursor
+        in: query
+        type: string
+        required: false
+        example: ""
+    note: "Tweets are under data.tweets and the pinned tweet under data.pin_tweet."
+
+  - id: twitterapi-io.user-followers
+    method: GET
+    path: /twitter/user/followers
+    summary: "Followers of an X user, newest first, with cursor pagination."
+    params:
+      - name: userName
+        in: query
+        type: string
+        required: true
+        example: "jack"
+      - name: pageSize
+        in: query
+        type: integer
+        required: false
+        example: 20
+      - name: cursor
+        in: query
+        type: string
+        required: false
+        example: ""
+    note: "Followers are under `followers`; paginate with `next_cursor` while `has_next_page` is true."
+
+base_url: https://api.twitterapi.io
