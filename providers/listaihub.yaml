@@ -1,0 +1,51 @@
+provider: listaihub
+docs_url: https://listaihub.com/en/developers
+status: draft
+
+auth:
+  location: header
+  format: "Authorization: Bearer {key}"
+  bad_key_behavior: >-
+    Public catalog endpoints require no key and return 200 OK. Authenticated agent
+    requests with a missing or invalid token return HTTP 401 with JSON:
+    {"error": "Unauthorized", "message": "Invalid API token", "status": 401}.
+
+pricing:
+  model: free
+  amount: 0.0
+  currency: USD
+  free_tier: "Free public access to AI agent directory catalog, OpenAPI 3.0 specification, and Model Context Protocol (MCP) endpoints."
+  source_url: https://listaihub.com/en/developers
+  checked: 2026-11-01
+
+endpoints:
+  - id: listaihub.get-agent-spec
+    method: GET
+    path: /agent/openapi.json
+    summary: "Fetch the complete OpenAPI 3.0 specification of AI tools, agent actions, and integration endpoints."
+    params: []
+    note: "Machine-readable specification for automated RAG, agent tool calling, and MCP server consumption."
+
+  - id: listaihub.search-tools
+    method: GET
+    path: /api/tools
+    summary: "Query curated AI tools and autonomous agent capabilities by keyword or category."
+    params:
+      - name: q
+        in: query
+        type: string
+        required: false
+        example: "seo audit"
+      - name: category
+        in: query
+        type: string
+        required: false
+        example: "marketing"
+      - name: limit
+        in: query
+        type: integer
+        required: false
+        example: 10
+    note: "Returns verified AI tools and agent capabilities matching search filters."
+
+base_url: https://listaihub.com
