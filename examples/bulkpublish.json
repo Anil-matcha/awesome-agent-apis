@@ -1,0 +1,194 @@
+{
+  "_captured": "2026-11-04, real responses from https://app.bulkpublish.com with a real API key (Authorization redacted as Bearer bp_***). Responses trimmed to the fields shown; platform `color`/`envVar` fields and the organization id were removed. Read-only calls only.",
+  "bulkpublish.list-platforms": {
+    "request": {
+      "method": "GET",
+      "path": "/api/platforms",
+      "headers": {
+        "Authorization": "Bearer bp_***"
+      }
+    },
+    "status": 200,
+    "response": {
+      "platforms": [
+        {
+          "platform": "facebook",
+          "displayName": "Facebook",
+          "enabled": true,
+          "state": "on",
+          "canConnect": true,
+          "canPublish": true
+        },
+        {
+          "platform": "instagram",
+          "displayName": "Instagram",
+          "enabled": true,
+          "state": "on",
+          "canConnect": true,
+          "canPublish": true
+        },
+        {
+          "platform": "x",
+          "displayName": "X",
+          "enabled": true,
+          "state": "on",
+          "canConnect": true,
+          "canPublish": true
+        },
+        {
+          "platform": "tiktok",
+          "displayName": "TikTok",
+          "enabled": true,
+          "state": "on",
+          "canConnect": true,
+          "canPublish": true
+        },
+        {
+          "platform": "youtube",
+          "displayName": "YouTube",
+          "enabled": true,
+          "state": "on",
+          "canConnect": true,
+          "canPublish": true
+        },
+        {
+          "platform": "threads",
+          "displayName": "Threads",
+          "enabled": true,
+          "state": "on",
+          "canConnect": true,
+          "canPublish": true
+        },
+        {
+          "platform": "bluesky",
+          "displayName": "Bluesky",
+          "enabled": true,
+          "state": "on",
+          "canConnect": true,
+          "canPublish": true
+        },
+        {
+          "platform": "pinterest",
+          "displayName": "Pinterest",
+          "enabled": true,
+          "state": "on",
+          "canConnect": true,
+          "canPublish": true
+        },
+        {
+          "platform": "gmb",
+          "displayName": "Google Business",
+          "enabled": true,
+          "state": "on",
+          "canConnect": true,
+          "canPublish": true
+        },
+        {
+          "platform": "linkedin",
+          "displayName": "LinkedIn",
+          "enabled": true,
+          "state": "on",
+          "canConnect": true,
+          "canPublish": true
+        },
+        {
+          "platform": "mastodon",
+          "displayName": "Mastodon",
+          "enabled": true,
+          "state": "on",
+          "canConnect": true,
+          "canPublish": true
+        },
+        {
+          "platform": "discord",
+          "displayName": "Discord",
+          "enabled": true,
+          "state": "on",
+          "canConnect": true,
+          "canPublish": true
+        },
+        {
+          "platform": "telegram",
+          "displayName": "Telegram",
+          "enabled": true,
+          "state": "on",
+          "canConnect": true,
+          "canPublish": true
+        },
+        {
+          "platform": "tumblr",
+          "displayName": "Tumblr",
+          "enabled": true,
+          "state": "on",
+          "canConnect": true,
+          "canPublish": true
+        },
+        {
+          "platform": "snapchat",
+          "displayName": "Snapchat",
+          "enabled": true,
+          "state": "on",
+          "canConnect": true,
+          "canPublish": true
+        }
+      ]
+    }
+  },
+  "bulkpublish.quota-usage": {
+    "request": {
+      "method": "GET",
+      "path": "/api/quotas/usage",
+      "headers": {
+        "Authorization": "Bearer bp_***"
+      }
+    },
+    "status": 200,
+    "response": {
+      "plan": "business",
+      "limits": {
+        "channels": 75,
+        "channelsPerPlatform": 5,
+        "postsPerDay": -1,
+        "scheduledPerDay": 100,
+        "apiRequestsPerDay": 50000,
+        "mediaStorageMB": 10240
+      },
+      "usage": {
+        "channels": 7,
+        "postsToday": 0,
+        "postsThisMonth": 0,
+        "pendingScheduled": 4,
+        "mediaStorageMB": 299
+      }
+    }
+  },
+  "bad_key": {
+    "request": {
+      "method": "GET",
+      "path": "/api/quotas/usage",
+      "headers": {
+        "Authorization": "Bearer bp_invalid"
+      }
+    },
+    "status": 401,
+    "response": {
+      "error": {
+        "message": "Unauthorized",
+        "code": "UNAUTHORIZED"
+      }
+    }
+  },
+  "missing_key": {
+    "request": {
+      "method": "GET",
+      "path": "/api/quotas/usage"
+    },
+    "status": 401,
+    "response": {
+      "error": {
+        "message": "Unauthorized",
+        "code": "UNAUTHORIZED"
+      }
+    }
+  }
+}
