@@ -1,0 +1,56 @@
+provider: mailveri
+docs_url: https://mailveri.com/docs
+status: draft
+
+auth:
+  location: header
+  format: "Authorization: Bearer {key}"
+  bad_key_behavior: >-
+    A bad or missing key returns HTTP 403 Forbidden. Observed body text was
+    plain "API 403: Forbidden" (not a JSON envelope). Do not rely on a 401
+    status or a JSON error shape for auth failures.
+
+pricing:
+  model: credits
+  amount: 9.0
+  currency: USD
+  free_tier: "1,000 free credits on signup; no card required to start. Credits never expire."
+  source_url: https://mailveri.com/pricing
+  checked: 2026-11-06
+  note: "Pay-as-you-go packages start at $9 per 10,000 credits ($0.0009 per email). Larger packs: $19/25K, $59/100K, $299/1M. No monthly subscription required."
+
+endpoints:
+  - id: mailveri.verify-mail
+    method: POST
+    path: /v1/verify-mail/
+    summary: "Verify one email address in real time (SMTP, disposable, role, catch-all, and related statuses)."
+    params:
+      - name: email
+        in: body
+        type: string
+        required: true
+        example: "test@example.com"
+    note: >-
+      Prefer application/json body {"email":"..."}. Form-urlencoded email=... is
+      also accepted. Legacy body alias "mail" works. Keep the trailing slash on
+      the path. Captured 200 response example (2026-11-06):
+      {"error":0,"message":"Verified test@example.com successfully","status":"INVALID","mail":"test@example.com","email":"test@example.com","balance":1232528,"quality_score":0,"is_forwarding":false}.
+      Status values include VALID, INVALID, DISPOSABLE, ROLE_ACCOUNT, CATCH_ALL,
+      FULL_INBOX, UNKNOWN.
+
+  - id: mailveri.verify-mails
+    method: POST
+    path: /v1/verify-mails/
+    summary: "Upload a .txt or .csv email list for bulk verification across MailVeri's worker cluster."
+    params:
+      - name: file
+        in: body
+        type: file
+        required: true
+        example: "emails.txt"
+    note: >-
+      Multipart file upload. Minimum 2 emails per file, max 100MB. Returns a job
+      id; poll progress with GET /v1/get-status/?id=... and download results via
+      /v1/download-result/ or /v1/download-zip/.
+
+base_url: https://api.mailveri.com
