@@ -1,0 +1,62 @@
+provider: getyoutubetranscript
+docs_url: https://getyoutubetranscript.com/docs
+status: draft
+
+auth:
+  location: header
+  format: "Authorization: Bearer {key}"
+  bad_key_behavior: >-
+    A bad or revoked key returns a real HTTP 401 with a JSON error envelope:
+    {"success": false, "code": "INVALID_API_KEY", "message": "This API key is
+    invalid or has been revoked."}. A missing key is also a 401, with code
+    MISSING_API_KEY. Every error (auth, bad video, no captions, no credits,
+    rate limit) uses the same envelope with success=false and a stable `code`,
+    so checking `success` in the body is equivalent to checking the status
+    code. The key can also be sent as `x-api-key: {key}`.
+
+pricing:
+  model: credits
+  amount: 5.0
+  currency: USD
+  free_tier: "100 credits once at sign-up, no card required. 1 credit = 1 successful request; a request that fails is never charged."
+  source_url: https://getyoutubetranscript.com/pricing
+  checked: 2026-11-06
+  note: "Monthly $5 / 1,000 credits (200 requests/min); Annual $54 per year for 12,000 credits; developer plans Starter $19 / 7,500 credits (300 requests/min), Pro $49 / 25,000 (400), Scale $99 / 60,000 (600). Credit top-ups cost $1.50 to $2.50 per 1,000 depending on the plan. Every plan includes the full REST API."
+
+endpoints:
+  - id: getyoutubetranscript.get-transcript
+    method: GET
+    path: /transcript
+    summary: "Full transcript text plus title, author and thumbnail for one YouTube video, from its URL or 11-character ID."
+    params:
+      - name: v
+        in: query
+        type: string
+        required: true
+        example: "jNQXAC9IVRw"
+      - name: language
+        in: query
+        type: string
+        required: false
+        example: "en"
+      - name: timestamps
+        in: query
+        type: boolean
+        required: false
+        example: false
+      - name: translate
+        in: query
+        type: string
+        required: false
+        example: "es"
+    note: >-
+      One block of text by default. Add `timestamps=true` to also get
+      `segments`, one {start, duration, text} per caption line (seconds); the
+      credit cost is the same either way. `language_code` in the response is the
+      caption track actually returned and can differ from the one requested,
+      because YouTube falls back to a track it has. `caption_type` is "manual"
+      (creator-uploaded), "auto" (speech recognition) or null when unknown.
+      `translate` machine-translates each caption line in place so timestamps
+      stay aligned.
+
+base_url: https://getyoutubetranscript.com/api/v1
