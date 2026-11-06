@@ -1,0 +1,31 @@
+{
+  "_captured": "2026-11-06, real response from https://getyoutubetranscript.com/api/v1 with a free-plan key; the key is not included",
+  "getyoutubetranscript.get-transcript": {
+    "request": {
+      "method": "GET",
+      "path": "/transcript",
+      "query": {
+        "v": "jNQXAC9IVRw",
+        "language": "en"
+      }
+    },
+    "status": 200,
+    "response": {
+      "success": true,
+      "data": {
+        "video_id": "jNQXAC9IVRw",
+        "language_code": "en",
+        "requested_language": "en",
+        "caption_type": null,
+        "title": "Me at the zoo",
+        "author_name": "jawed",
+        "author_url": "https://www.youtube.com/channel/UC4QobU6STFB0P71PMvOGN5A",
+        "thumbnail_url": "https://yt3.ggpht.com/uI3VE4PVqvCy0xnWLqMJnEzyBUm3T8VHOCp4ee-1RxdHqKXCdUE_qXYQnpf9AfuEoIPactVyDhM=s176-c-k-c0x00ffffff-no-rj",
+        "transcript": "All right, so here we are, in front of the elephants the cool thing about these guys is that they have really... really really long trunks and that's cool (baaaaaaaaaaahhh!!) and that's pretty much all there is to say",
+        "word_count": 39,
+        "cached": true,
+        "fetched_at": "2026-08-25T04:47:39.930Z"
+      }
+    }
+  }
+}
