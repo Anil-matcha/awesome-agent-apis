@@ -1,0 +1,42 @@
+{
+  "_captured": "2026-11-06 Asia/Bangkok, real POST https://api.mailveri.com/v1/verify-mail/ with a live MailVeri key; API key not included",
+  "mailveri.verify-mail": {
+    "request": {
+      "method": "POST",
+      "path": "/v1/verify-mail/",
+      "headers": {
+        "Authorization": "Bearer ***REDACTED***",
+        "Content-Type": "application/json"
+      },
+      "body": {
+        "email": "test@example.com"
+      }
+    },
+    "status": 200,
+    "response": {
+      "error": 0,
+      "message": "Verified test@example.com successfully",
+      "status": "INVALID",
+      "mail": "test@example.com",
+      "email": "test@example.com",
+      "balance": 1232528,
+      "quality_score": 0,
+      "is_forwarding": false
+    }
+  },
+  "mailveri.bad-key": {
+    "request": {
+      "method": "POST",
+      "path": "/v1/verify-mail/",
+      "headers": {
+        "Authorization": "Bearer INVALID_KEY_FOR_TEST",
+        "Content-Type": "application/json"
+      },
+      "body": {
+        "email": "test@example.com"
+      }
+    },
+    "status": 403,
+    "response_text": "API 403: Forbidden"
+  }
+}
