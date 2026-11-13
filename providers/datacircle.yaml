@@ -1,0 +1,91 @@
+provider: datacircle
+docs_url: https://api.datacircle.dev/v1/openapi.json
+status: draft
+
+auth:
+  location: header
+  format: "none, no key and no account"
+  bad_key_behavior: >-
+    There is no key. An Authorization header is ignored and the call returns 200
+    as usual. An unknown path returns a real HTTP 404 with {"error": "no such
+    endpoint: /v1/nonexist. See https://datacircle.dev"}. More than 60 calls a
+    minute from one address returns 429.
+
+pricing:
+  model: free
+  amount: 0.0
+  currency: USD
+  free_tier: "Free and open, no key. At most 60 calls a minute from one address."
+  source_url: https://datacircle.dev
+  checked: 2026-11-13
+
+endpoints:
+  - id: datacircle.list-apis
+    method: GET
+    path: /apis
+    summary: "Every GTM API on the Datacircle sheet, with its slug, plan and provider counts and its best plan."
+    params: []
+    note: "Datacircle (https://datacircle.dev) benchmarks all the GTM APIs. Each answer's Link header points to its page on the site."
+
+  - id: datacircle.best-for-api
+    method: GET
+    path: /apis/{slug}/best
+    summary: "Who is best for one API, its plans ranked by score out of 100."
+    params:
+      - name: slug
+        in: path
+        type: string
+        required: true
+        example: "people-enrichment"
+      - name: limit
+        in: query
+        type: integer
+        required: false
+        example: 2
+    note: ""
+
+  - id: datacircle.search-plans
+    method: GET
+    path: /plans
+    summary: "Search every plan, by API, provider or price."
+    params:
+      - name: api
+        in: query
+        type: string
+        required: false
+        example: "people-enrichment"
+      - name: query
+        in: query
+        type: string
+        required: false
+        example: "linkedin"
+      - name: sort
+        in: query
+        type: string
+        required: false
+        example: "price"
+      - name: limit
+        in: query
+        type: integer
+        required: false
+        example: 2
+      - name: offset
+        in: query
+        type: integer
+        required: false
+        example: 0
+    note: ""
+
+  - id: datacircle.get-provider
+    method: GET
+    path: /providers/{slug}
+    summary: "One provider's ranks across the APIs it sells."
+    params:
+      - name: slug
+        in: path
+        type: string
+        required: true
+        example: "leadmcp"
+    note: ""
+
+base_url: https://api.datacircle.dev/v1
