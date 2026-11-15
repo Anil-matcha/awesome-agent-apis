@@ -95,6 +95,7 @@ on one yourself.
 - [MuAPI agent skills docs](https://muapi.ai/docs/agent-skills) — How MuAPI's own skills/tool-catalog surface works for agents.
 - [MuAPI access keys](https://muapi.ai/access-keys) — Create a key if you're pairing this catalog with MuAPI's own generative-media API.
 - [awesome-jev-by-typesafe](https://github.com/Anil-matcha/awesome-jev-by-typesafe) — Typed, confidence-aware decision workflows for routing agents and API tools.
+- [No Stairs Please MCP](https://nostairsplease.com/mcp) — Public MCP server for querying US & BC live-music venue capacity, accessibility, and tour-routing data.
 
 ## License
 
