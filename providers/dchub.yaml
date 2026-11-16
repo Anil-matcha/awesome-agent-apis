@@ -16,12 +16,12 @@ auth:
     {"error": "plan_required", "current_plan": "anonymous", ...}.
 
 pricing:
-  model: flat_subscription
+  model: optional_key
   currency: USD
-  free_tier: "Market list, DCPI verdicts and composite scores, and Capacity Source listings need no key. A free developer key is one POST to /api/v1/keys/claim (no email, no card) and adds previews plus a small daily allowance of full answers."
-  source_url: https://dchub.cloud/pricing
-  checked: 2026-10-22
-  note: "Paid plans: dchub.cloud/pricing. The same data is also served as a hosted MCP server (94 tools) at https://dchub.cloud/mcp."
+  note_access: "DCHUB_API_KEY is optional. Market list, DCPI verdicts and composite scores, and Capacity Source listings need no key."
+  source_url: https://dchub.cloud/connect
+  checked: 2026-11-15
+  note: "The same data is also served as a hosted MCP server (96 tools) at https://dchub.cloud/mcp. DCHUB_API_KEY is optional."
 
 endpoints:
   - id: dchub.list-markets
@@ -46,7 +46,7 @@ endpoints:
         type: string
         required: true
         example: "ashburn"
-    note: "Keyless for the verdict and composite score; sub-scores are listed in `_locked_fields` and need a paid key. Aliases resolve (northern-virginia returns `_canonical_slug: ashburn`)."
+    note: "Keyless for the verdict and composite score; sub-scores are listed in `_locked_fields` and need a key. Aliases resolve (northern-virginia returns `_canonical_slug: ashburn`)."
 
   - id: dchub.queue-refined
     method: GET
