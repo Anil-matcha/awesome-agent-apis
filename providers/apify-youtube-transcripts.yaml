@@ -1,0 +1,71 @@
+provider: apify-youtube-transcripts
+docs_url: https://apify.com/johnvc/youtubetranscripts/api
+status: draft
+
+auth:
+  location: header
+  format: "Authorization: Bearer {key}"
+  bad_key_behavior: >-
+    A bad key returns a real HTTP 401 with a JSON body:
+    {"error": {"type": "user-or-token-not-found", "message": "User was not
+    found or authentication token is not valid"}}. A missing key returns HTTP
+    402 (not 401) with {"error": {"type": "x402-payment-required", "message":
+    "Request not authenticated. Add your Apify API token, or a
+    PAYMENT-SIGNATURE header for x402 payment. ..."}}, because Apify offers
+    x402 pay-per-request as an alternative to a token. Both are real error
+    statuses, so status-code checks work. The key is an Apify API token
+    (Apify Console > Settings > API & Integrations); it can also be passed as
+    a ?token= query parameter, but the header is preferred.
+
+pricing:
+  model: per_call
+  amount: 0.00275
+  currency: USD
+  free_tier: "Apify's free plan includes $5 of platform credit per month with no card required, which covers roughly 1,800 transcripts at the free-plan rate."
+  source_url: https://apify.com/johnvc/youtubetranscripts/pricing
+  checked: 2026-11-16
+  note: "$0.00275 per video successfully transcribed on the free plan ($0.0025 Bronze, $0.00225 Silver, $0.002 Gold and above), plus $0.00001 per run start and per stored row. Failed videos, videos without captions and list_only discovery are not charged. Optional extended metadata is a separate per-video charge."
+
+endpoints:
+  - id: apify-youtube-transcripts.get-transcript
+    method: POST
+    path: /v2/acts/johnvc~YoutubeTranscripts/run-sync-get-dataset-items
+    summary: "Transcript (timestamped segments plus plain text) and basic video metadata for one or more YouTube videos or Shorts, returned as a JSON array."
+    params:
+      - name: youtube_url
+        in: body
+        type: string
+        required: true
+        example: "https://www.youtube.com/watch?v=jNQXAC9IVRw"
+      - name: languages
+        in: body
+        type: array
+        required: false
+        example: ["en"]
+      - name: translate_to
+        in: body
+        type: string
+        required: false
+        example: "es"
+      - name: channel
+        in: body
+        type: string
+        required: false
+        example: "@mkbhd"
+      - name: channel_transcripts
+        in: body
+        type: boolean
+        required: false
+        example: false
+    note: >-
+      Success is HTTP 201, not 200. The call is synchronous: it runs the job
+      and returns the dataset rows in the response body, waiting up to 300
+      seconds. `youtube_url` takes one URL as a string or up to 100 as an
+      array; any YouTube URL format works. Instead of URLs you can pass
+      `channel` (an @handle or channel URL) to list a channel's videos, and
+      set `channel_transcripts: true` to also fetch their transcripts. Each
+      row has `success`; a video without captions comes back as a row with
+      success=false and is not charged. The path uses a tilde
+      (johnvc~YoutubeTranscripts), not a slash.
+
+base_url: https://api.apify.com

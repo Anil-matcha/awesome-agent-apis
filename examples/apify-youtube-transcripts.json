@@ -1,0 +1,66 @@
+[{
+  "video_id": "jNQXAC9IVRw",
+  "language": "English",
+  "language_code": "en",
+  "is_generated": false,
+  "is_translatable": false,
+  "translation_languages": [],
+  "total_seconds": 18.881,
+  "timestamped": [
+    {
+      "text": "All right, so here we are, in front of the\nelephants",
+      "start": 1.2,
+      "duration": 2.16
+    },
+    {
+      "text": "the cool thing about these guys is that they\nhave really...",
+      "start": 5.318,
+      "duration": 2.656
+    },
+    {
+      "text": "really really long trunks",
+      "start": 7.974,
+      "duration": 4.642
+    },
+    {
+      "text": "and that's cool",
+      "start": 12.616,
+      "duration": 1.751
+    },
+    {
+      "text": "(baaaaaaaaaaahhh!!)",
+      "start": 14.421,
+      "duration": 1.312
+    },
+    {
+      "text": "and that's pretty much all there is to\nsay",
+      "start": 16.881,
+      "duration": 2
+    }
+  ],
+  "non_timestamped": "All right, so here we are, in front of the\nelephants the cool thing about these guys is that they\nhave really... really really long trunks and that's cool (baaaaaaaaaaahhh!!) and that's pretty much all there is to\nsay",
+  "source_type": "Manual",
+  "snippet_count": 6,
+  "duration_human": "18s",
+  "url": "https://www.youtube.com/watch?v=jNQXAC9IVRw",
+  "title": "Me at the zoo",
+  "description": "Microplastics are accumulating in human brains at an alarming rate\nhttps://www.youtube.com/watch?v=0PT5c1z3LL8\n\n“Nanoplastics and Human Health” with Matthew J Campen, PhD, MSPH\nhttps://www.youtube.com/watch?v=RRBN_4L09Mg\n\n00:00 Intro\n00:05 The cool thing\n00:17 End",
+  "channel_name": "jawed",
+  "channel_id": "UC4QobU6STFB0P71PMvOGN5A",
+  "channel_url": "https://www.youtube.com/channel/UC4QobU6STFB0P71PMvOGN5A",
+  "view_count": 438602468,
+  "video_duration_seconds": 19,
+  "thumbnail_url": "https://i.ytimg.com/vi/jNQXAC9IVRw/hqdefault.jpg?sqp=-oaymwEmCOADEOgC8quKqQMa8AEB-AG-AoAC8AGKAgwIABABGFUgWShlMA8=&rs=AOn4CLA9eLBatYv9WbkD4BbZ2Im-biSPTw",
+  "tags": [
+    "me at the zoo",
+    "jawed karim",
+    "first youtube video"
+  ],
+  "was_live": false,
+  "metadata_source": "innertube",
+  "timestamp": "2026-11-16T13:11:23.846274",
+  "success": true,
+  "cached": true,
+  "fetched_at": "2026-09-30T19:34:46.052785+00:00",
+  "cache_age_days": 46
+}]
