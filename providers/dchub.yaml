@@ -21,7 +21,7 @@ pricing:
   note_access: "DCHUB_API_KEY is optional. Market list, DCPI verdicts and composite scores, and Capacity Source listings need no key."
   source_url: https://dchub.cloud/connect
   checked: 2026-11-15
-  note: "The same data is also served as a hosted MCP server (96 tools) at https://dchub.cloud/mcp. DCHUB_API_KEY is optional."
+  note: "The same data is also served as a hosted MCP server (97 tools) at https://dchub.cloud/mcp. DCHUB_API_KEY is optional."
 
 endpoints:
   - id: dchub.list-markets
