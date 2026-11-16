@@ -1,0 +1,320 @@
+{
+  "_captured": "2026-10-22, real responses from https://dchub.cloud with no key (keyless endpoints) and with a deliberately bad key; nothing redacted because no real key was used",
+  "dchub.list-markets": {
+    "request": {
+      "method": "GET",
+      "path": "/api/v1/markets?limit=3"
+    },
+    "status": 200,
+    "response": {
+      "count": 5,
+      "data": [
+        {
+          "cities": [
+            "Ashburn",
+            "Loudoun",
+            "Sterling",
+            "Reston",
+            "Herndon"
+          ],
+          "contained_in": [],
+          "facility_count": 463,
+          "id": "northern virginia",
+          "name": "Northern Virginia",
+          "total_power_mw": 9956.0
+        },
+        {
+          "auto_discovered": true,
+          "cities": [
+            "London"
+          ],
+          "country": "GB",
+          "facility_count": 381,
+          "id": "london-gb",
+          "international": true,
+          "name": "London",
+          "total_power_mw": 702.0
+        },
+        {
+          "auto_discovered": true,
+          "cities": [
+            "Singapore"
+          ],
+          "country": "SG",
+          "facility_count": 321,
+          "id": "singapore-sg",
+          "international": true,
+          "name": "Singapore",
+          "total_power_mw": 672.0
+        },
+        {
+          "auto_discovered": true,
+          "cities": [
+            "Tokyo"
+          ],
+          "country": "JP",
+          "facility_count": 271,
+          "id": "tokyo-jp",
+          "international": true,
+          "name": "Tokyo",
+          "total_power_mw": 485.0
+        },
+        {
+          "auto_discovered": true,
+          "cities": [
+            "Amsterdam"
+          ],
+          "country": "NL",
+          "facility_count": 256,
+          "id": "amsterdam-nl",
+          "international": true,
+          "name": "Amsterdam",
+          "total_power_mw": 993.0
+        }
+      ],
+      "locked": 127,
+      "provenance": {
+        "as_of": null,
+        "as_of_basis": "UNMEASURED — live aggregate of the facility registry at serve time; the registry carries no row-level data vintage. served_on is when it was computed, not when the data was collected. Ingest freshness: /api/v1/ops/deadman.",
+        "basis": "derived",
+        "basis_class": "derived",
+        "cite_as": "DC Hub, dchub.cloud",
+        "cite_url_template": "https://dchub.cloud/markets/{id}",
+        "license": "CC-BY-4.0",
+        "method": "total_power_mw and facility_count count OPERATIONAL facilities only, with duplicate records excluded — the same basis the rank_markets tool and the DCPI market scores use. pipeline_mw_total is de-duplicated but NOT lifecycle-filtered: it is the construction/planned/permitting sum by definition.",
+        "population_filter": "operational_deduped",
+        "served_on": "2026-10-22T21:31:45.836532+00:00",
+        "source": "DC Hub facilities registry",
+        "summing_note": "Markets may OVERLAP. Any row with a non-empty `contained_in` is a strict subset of the market(s) it names — e.g. ashburn sits inside northern virginia. Do not add their MW together."
+      },
+      "signup_url": "https://dchub.cloud/signup",
+      "tier": "anonymous",
+      "total": 132,
+      "upgrade_url": "https://dchub.cloud/signup",
+      "upsell": "Sign up free for 10 markets"
+    }
+  },
+  "dchub.get-dcpi-score": {
+    "request": {
+      "method": "GET",
+      "path": "/api/v1/dcpi/scores/ashburn"
+    },
+    "status": 200,
+    "response": {
+      "_gated": true,
+      "_locked_fields": [
+        "avg_kwh_cents",
+        "constraint_score",
+        "curtailment_pct",
+        "emergency_count_30d",
+        "excess_power_score",
+        "forecast",
+        "gen_additions_12mo_mw",
+        "quality_score",
+        "queue_capacity_mw",
+        "queue_wait_months",
+        "reserve_margin_pct",
+        "time_to_power_months",
+        "top_opportunities_json",
+        "top_risks_json"
+      ],
+      "_preview_only": true,
+      "_total_available": 1,
+      "_upgrade_cta": "BUILD/CAUTION/AVOID verdicts, the composite score and the market list are free. The DCPI sub-scores (excess-power, grid-constraint, time-to-power) and risk/opportunity detail unlock with a paid DC Hub plan for agents. A key holding pack credits also opens a single market, at one credit per full answer.",
+      "avg_kwh_cents": null,
+      "composite_score": 18.4,
+      "computed_at": "2026-10-22T18:28:54.356963+00:00",
+      "constraint_score": null,
+      "curtailment_pct": null,
+      "data_basis": "mixed",
+      "data_basis_note": "live: gen_additions_12mo_mw, queue_capacity_mw, queue_wait_months, reserve_margin_pct; modeled: btm_headroom_mw, curtailment_pct, demand_growth_yoy_pct, queue_approval_rate_pct",
+      "data_basis_source": "DC Hub analyst estimate - calibrated from published PJM Interconnection disclosures; not a per-market measurement",
+      "dcpi_confidence": {
+        "basis": {
+          "freshness": "fresh_24h",
+          "input_count": 8,
+          "iso_default_matched": true,
+          "layer_max": 3,
+          "live_inputs": 4,
+          "live_layer_names": [
+            "grid telemetry",
+            "interconnection queue",
+            "planned generators"
+          ],
+          "live_layers": 3,
+          "silent_layer_names": []
+        },
+        "evaluated_at": "2026-10-22T21:32:32.876459+00:00",
+        "level": "medium",
+        "reason": null,
+        "value": 0.75
+      },
+      "dcpi_provenance": {
+        "as_of": "2026-10-22T18:28:54.356963+00:00",
+        "blended_inputs": [
+          "reserve margin: modeled planning reserve adjusted by live grid telemetry"
+        ],
+        "broker_inputs": [],
+        "input_basis": "mixed",
+        "inputs_reason": null,
+        "live_inputs": [
+          "interconnection queue depth",
+          "interconnection queue wait",
+          "planned generation additions (next 12 months)",
+          "reserve margin"
+        ],
+        "live_sources": [
+          "grid telemetry",
+          "interconnection queue",
+          "planned generators"
+        ],
+        "method_version": "2.5.0",
+        "modeled_inputs": [
+          "behind-the-meter headroom",
+          "demand growth",
+          "queue approval rate",
+          "renewable curtailment"
+        ],
+        "modeled_source": "DC Hub analyst estimate - calibrated from published PJM Interconnection disclosures; not a per-market measurement",
+        "queue_wait_basis": "live_queue_depth_estimate",
+        "score": "modeled",
+        "structural_zero_inputs": [
+          "grid emergencies (last 30 days)",
+          "stranded capacity"
+        ]
+      },
+      "emergency_count_30d": null,
+      "excess_power_score": null,
+      "forecast": {
+        "available": false,
+        "reason": "locked_in_preview"
+      },
+      "gating_matrix": "https://dchub.cloud/api/v1/gating-matrix",
+      "gen_additions_12mo_mw": null,
+      "id": 1374,
+      "iso": "PJM",
+      "iso_type": "RTO",
+      "latitude": 39.02,
+      "locked": true,
+      "longitude": -77.47,
+      "market_name": "ASHBURN",
+      "market_slug": "ashburn",
+      "method_version": "2.5.0",
+      "provenance": {
+        "as_of": "2026-10-22T18:28:54.356963+00:00",
+        "basis_class": "derived",
+        "cite_as": "DC Hub, dchub.cloud",
+        "cite_url_template": "https://dchub.cloud/dcpi/{market_slug}",
+        "default_v": "inferred",
+        "fallback_url": "https://dchub.cloud/markets/directory",
+        "license": "CC-BY-4.0",
+        "method": "DCPI scoring method_version=2.5.0 (full method: /api/v1/dcpi/methodology); see data_basis/data_basis_source for the score's input basis; signal_tier=full (see signal_tier_note)",
+        "provenance_revision": "1.1",
+        "provenance_version": 1,
+        "source": "Data Center Power Index (DCPI) — market_power_scores"
+      },
+      "published": true,
+      "quality_score": null,
+      "queue_capacity_mw": null,
+      "queue_wait_months": null,
+      "required_plan": "developer",
+      "reserve_margin_pct": null,
+      "signal_tier": "full",
+      "signal_tier_basis": "live_adapter_count_at_score_time",
+      "signal_tier_note": "full = all 3 live-capable adapters (interconnect_queue, planned_generators, grid_telemetry) returned data; partial = 1-2; low = 0, or this market's ISO fell through to the WECC default. 'full' does NOT mean every score input is measured — data_basis carries the per-field live/modeled split and the adapter counts.",
+      "state": "VA",
+      "stranded_capacity_mw": null,
+      "tier_required": "lite-pro",
+      "time_to_power_months": null,
+      "top_opportunities_json": null,
+      "top_risks_json": null,
+      "trend_30d": null,
+      "upgrade_options": [
+        {
+          "label": "A one-time pack of 1,000 API credits (usage capacity, not a subscription); each full answer here uses one",
+          "opens": "rest",
+          "plan": "pack",
+          "url": "https://dchub.cloud/go/c/bWV0ZXJlZHw.8a3123d8816649706aaf774b612ed299"
+        },
+        {
+          "label": "A paid DC Hub plan for agents opens this endpoint",
+          "opens": "rest",
+          "plan": "developer",
+          "url": "https://dchub.cloud/go/c/ZGV2ZWxvcGVyfA.f3f7e3b8f7f10047977d81b9eb754f61"
+        }
+      ],
+      "upgrade_url": "https://dchub.cloud/go/c/bWV0ZXJlZHw.8a3123d8816649706aaf774b612ed299",
+      "verdict": "AVOID",
+      "verdict_means": "The DCPI verdict (BUILD / CAUTION / AVOID) describes the outlook for new power in this market, from its excess-power and grid-constraint scores; it is not a judgement of the market's quality, size or demand."
+    }
+  },
+  "dchub.energy-prices (bad key)": {
+    "request": {
+      "method": "GET",
+      "path": "/api/energy/prices/AZ",
+      "headers": {
+        "X-API-Key": "dchub_bad_key_test"
+      }
+    },
+    "status": 401,
+    "response": {
+      "error": "invalid_api_key",
+      "get_key_url": "https://dchub.cloud/dashboard.html#api-keys",
+      "message": "Invalid or inactive API key",
+      "success": false,
+      "_upgrade_hint": {
+        "claim_key": "POST https://dchub.cloud/api/v1/keys/claim",
+        "signup_url": "https://dchub.cloud/signup",
+        "developer_url": "https://dchub.cloud/checkout/start?tier=developer",
+        "pro_url": "https://dchub.cloud/checkout/start?tier=pro",
+        "preview_url": "https://dchub.cloud/api/v1/mcp/preview/<tool>",
+        "upgrade_hint": "https://dchub.cloud/api/v1/upgrade-hint",
+        "enterprise_url": "https://dchub.cloud/enterprise",
+        "enterprise_quick": "Hedge fund / REIT / broker / infra GP? DC Hub contract plans cover data licensing with raw exports, monthly briefings and custom DCPI weights. https://dchub.cloud/enterprise",
+        "what_you_get": "Free dev key (one POST, no email, no card) = previews plus 2 full answers per tool per day; add an email for 50 calls/day. More API capacity: a one-time pack of 1,000 API credits (usage capacity, not a subscription) (1 per call, 5 for heavy tools). A paid DC Hub plan for agents: full depth on every tool except the tools only the DC Hub plan with every tool opens; the DC Hub plan with every tool adds them.",
+        "pricing_quick": "Anonymous: previews, no key needed · Free key: previews plus 2 full answers per tool per day · Email-bound 50/day · a one-time pack of 1,000 API credits (usage capacity, not a subscription) · a paid DC Hub plan for agents · the DC Hub plan with every tool · DC Hub contract plans for data licensing",
+        "pack_url": "https://dchub.cloud/go/c/bWV0ZXJlZHw.8a3123d8816649706aaf774b612ed299",
+        "agent_quotable": "This DC Hub endpoint needs an API key. A free key is one POST https://dchub.cloud/api/v1/keys/claim (no email, no card; previews plus 2 full answers per tool per day), sent as the X-API-Key header. Full depth is a paid DC Hub plan for agents; more API capacity is a one-time pack of 1,000 API credits (usage capacity, not a subscription).",
+        "variant": "A",
+        "for_status": 401,
+        "for_path": "/api/energy/prices/AZ",
+        "email_capture": {
+          "url": "https://dchub.cloud/notify?tool=AZ",
+          "prompt": "For the operator: an email here gets a free dev key (50 calls/day once the email is bound, no card) and a reset notice, as an account they can manage and upgrade."
+        }
+      }
+    }
+  },
+  "dchub.energy-prices (no key)": {
+    "request": {
+      "method": "GET",
+      "path": "/api/energy/prices/AZ"
+    },
+    "status": 403,
+    "response": {
+      "agent_instruction": "When a result is partial, show your user the human_message (or for_your_human) text and its link. Do not invent withheld numbers.",
+      "current_plan": "anonymous",
+      "error": "plan_required",
+      "human_url": "https://dchub.cloud/upgrade/h/fHJlc3RfYXBpfGZyZWV8MTc5MjcwMjgwMHx3LWNhcGFjaXR5.be297cb77e3fc2a2e9844b2c0b98ff0d",
+      "message": "A key on a paid DC Hub plan for agents (or a higher one) opens this endpoint over REST, and so does any valid key holding pack credits, at one credit per full answer.",
+      "pricing_url": "https://dchub.cloud/pricing",
+      "required_plan": "developer",
+      "success": false,
+      "upgrade_options": [
+        {
+          "label": "A one-time pack of 1,000 API credits (usage capacity, not a subscription); each full answer here uses one",
+          "opens": "rest",
+          "plan": "pack",
+          "url": "https://dchub.cloud/go/c/bWV0ZXJlZHw.8a3123d8816649706aaf774b612ed299"
+        },
+        {
+          "label": "A paid DC Hub plan for agents opens this endpoint",
+          "opens": "rest",
+          "plan": "developer",
+          "url": "https://dchub.cloud/go/c/ZGV2ZWxvcGVyfA.f3f7e3b8f7f10047977d81b9eb754f61"
+        }
+      ],
+      "upgrade_url": "https://dchub.cloud/go/c/bWV0ZXJlZHw.8a3123d8816649706aaf774b612ed299"
+    }
+  }
+}
