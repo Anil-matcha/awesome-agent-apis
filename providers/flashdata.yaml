@@ -1,0 +1,135 @@
+provider: flashdata
+docs_url: https://flashdata.dev/docs/sources/google_search
+status: draft
+
+auth:
+  location: header
+  format: "X-API-Key: {key}"
+  bad_key_behavior: >-
+    Tested 2026-11-22 against POST https://data.flashdata.dev/v1/queries/realtime:
+    an invalid X-API-Key header returns HTTP 401 with JSON body
+    {"success":false,"message":"Invalid API Key format."}. Omitting the X-API-Key
+    header altogether is rejected at the Cloudflare edge with HTTP 403 HTML
+    before reaching origin, so callers must always include X-API-Key.
+
+pricing:
+  model: credits
+  amount: 1.0
+  currency: USD
+  free_tier: "Free trial after email verification, no credit card required. Pay-as-you-go starts at $0/mo base: $1.00 / 1,000 Google Search requests, $0.50 / 1,000 YouTube Data requests, and $0.10 / GB YouTube Download delivered."
+  source_url: https://flashdata.dev/pricing
+  checked: 2026-11-22
+  note: "amount: 1.0 reflects the $1.00 / 1,000 Google Search pay-as-you-go rate (1 credit = $0.05; 0.02 credits/Google Search, 0.01 credits/standard YouTube Data request). Pay-as-you-go has $0/mo base fee with shared credits across all 15 sources; optional monthly plans start at Micro $49.00/mo ($0.80/1k Google Search, $0.40/1k YouTube Data, $0.08/GB Download). Hosted MCP endpoint: https://data.flashdata.dev/mcp."
+
+endpoints:
+  - id: flashdata.google-search
+    method: POST
+    path: /v1/queries/realtime
+    summary: "Real-time structured JSON results for Google Search (web, images, news, shopping, videos, places) via the source parameter."
+    params:
+      - name: source
+        in: body
+        type: string
+        required: true
+        example: "google_search"
+      - name: query
+        in: body
+        type: string
+        required: true
+        example: "model context protocol"
+      - name: params.gl
+        in: body
+        type: string
+        required: false
+        example: "us"
+      - name: params.hl
+        in: body
+        type: string
+        required: false
+        example: "en"
+      - name: params.num
+        in: body
+        type: integer
+        required: false
+        example: 10
+    note: >-
+      JSON body nests optional search options under a top-level `params` object, e.g.
+      {"source": "google_search", "query": "model context protocol", "params": {"gl": "us", "hl": "en", "num": 10}}.
+      Set `source` to `google_search`, `google_images`, `google_news`, `google_shopping`,
+      `google_videos`, or `google_places`. Async and batch execution are also available via
+      POST /v1/queries and POST /v1/queries/batch.
+
+  - id: flashdata.youtube-transcript
+    method: POST
+    path: /v1/queries/realtime
+    summary: "Retrieve structured YouTube video transcripts and captions by 11-character video_id."
+    params:
+      - name: source
+        in: body
+        type: string
+        required: true
+        example: "youtube_transcript"
+      - name: video_id
+        in: body
+        type: string
+        required: true
+        example: "dQw4w9WgXcQ"
+      - name: params.language
+        in: body
+        type: string
+        required: false
+        example: "en"
+      - name: params.auto
+        in: body
+        type: boolean
+        required: false
+        example: true
+    note: >-
+      JSON body nests optional transcript options under a top-level `params` object, e.g.
+      {"source": "youtube_transcript", "video_id": "dQw4w9WgXcQ", "params": {"language": "en", "auto": true}}.
+      Use `source: youtube_captions` for manual captions, or `youtube_metadata`, `youtube_search`,
+      `youtube_search_extended`, `youtube_channel`, `youtube_suggestions`, and `youtube_trainability`
+      on the same endpoint.
+
+  - id: flashdata.youtube-download
+    method: POST
+    path: /v1/queries
+    summary: "Asynchronous YouTube video or audio download delivered directly to your cloud storage bucket."
+    params:
+      - name: source
+        in: body
+        type: string
+        required: true
+        example: "youtube_download"
+      - name: video_id
+        in: body
+        type: string
+        required: true
+        example: "dQw4w9WgXcQ"
+      - name: params.storage
+        in: body
+        type: object
+        required: true
+        example: {"storage_type": "s3", "storage_url": "your-media-bucket", "object_prefix": "youtube", "region": "us-east-1"}
+      - name: params.download_type
+        in: body
+        type: string
+        required: false
+        example: "audio_video"
+      - name: params.video_quality
+        in: body
+        type: string
+        required: false
+        example: "<=720"
+      - name: params.output_format
+        in: body
+        type: string
+        required: false
+        example: "mp4"
+    note: >-
+      Runs asynchronously and uploads completed media directly to the caller's configured cloud storage
+      bucket. `params.storage` is required (including `storage_type`, `storage_url`, and storage credentials)
+      and all download options are nested inside the top-level `params` object. Poll job status and results
+      via the `links` (`self`, `results`) returned on submission (e.g. GET https://api.flashdata.dev/v2/jobs/{jobId}).
+
+base_url: https://data.flashdata.dev
