@@ -1,0 +1,48 @@
+provider: vibeshield
+docs_url: https://vibe-checker.appwrite.network/llms.txt
+status: draft
+
+auth:
+  location: header
+  format: "None required for /api/free-scan and /api/badge.svg; optional X-Pro-Key: {key} for unlocked findings"
+  bad_key_behavior: >-
+    No API key is required for the free diagnostic endpoints (/api/free-scan, /api/badge.svg).
+    If an invalid URL or blocked private IP is passed to /api/free-scan, the API returns HTTP 400
+    with JSON {"ok": false, "error": "..."}. Passing an unrecognized X-Pro-Key falls back to the
+    free tier with lockedFindingsCount > 0 rather than failing the scan.
+
+pricing:
+  model: free
+  amount: 0.0
+  currency: USD
+  free_tier: "Unlimited passive read-only scans via /api/free-scan (score, grade, severity breakdown, headers, and finding summaries) and live /api/badge.svg with no signup or credit card."
+  source_url: https://vibe-checker.appwrite.network/
+  checked: 2026-11-23
+  note: "Optional one-time Web Pro fix unlock is $2 Launch Special (reg. $9) or $5 for the 3-app OmniForge Complete Suite (reg. $29); pay-per-call x402 API is also available via omnipulse-x402.appwrite.network."
+
+endpoints:
+  - id: vibeshield.free-scan
+    method: GET
+    path: /api/free-scan
+    summary: "Run a passive 6-phase (116-check) web app security audit covering HTTP Observatory headers, CSP, client-side JS secret leaks (52 patterns), 28 SPA-filtered sensitive paths, and read-only Supabase/Firebase exposure."
+    params:
+      - name: url
+        in: query
+        type: string
+        required: true
+        example: "https://example.com"
+    note: "Strictly passive and read-only; rejects localhost/private RFC 1918 targets to prevent SSRF."
+
+  - id: vibeshield.live-badge
+    method: GET
+    path: /api/badge.svg
+    summary: "Return a live self-updating SVG security score badge (<score>/100 <grade>) cached for 15 minutes for embedding in GitHub READMEs and dashboards."
+    params:
+      - name: url
+        in: query
+        type: string
+        required: true
+        example: "supabase.com"
+    note: "Returns image/svg+xml (HTTP 200) with Cache-Control: public, max-age=900."
+
+base_url: https://vibe-checker.appwrite.network
